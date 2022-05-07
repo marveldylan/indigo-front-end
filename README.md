@@ -1,4 +1,4 @@
-![Image](assets/indigo-1.svg)
+# Indigo
 ***
 ## Date: 05/05/2022
 
