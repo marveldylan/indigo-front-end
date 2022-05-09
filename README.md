@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Indigo
+***
+## Date: 05/05/2022
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## By: Dylan Marvel
 
-## Available Scripts
+ ### [Github](https://github.com/marveldylan) | [Twitter](https://twitter.com/dmarv77) | [LinkedIn](https://www.linkedin.com/in/dylan-marvel/)
+ ***
 
-In the project directory, you can run:
+ ## ***DESCRIPTION***
+ ### Indigo is a new social media app that combines user messaging threads with new polling technology to gauge popularity and facilitate discourse on topics, posts, and ideas. User posts support a wide variety of content including rich text, images, videos, and GIFs. Other users can view content and comment as normal, however instead of a like or dislike, users can choose one of three colors for a reaction; red, blue or indigo. Default parameters allow for red = negative response, blue = positive response, indigo = middle/wildcard, however the post can also specify a use case for each response. In turn, comments can also be voted upon, similar to Upvotes in Reddit. The number/percentage of each response is displayed as a bar underneath the post or comment with relative ratios of each color. Indigo features a mobile-first design and seeks to implement a fun and intuitive UI. Posts and comments will be sorted and searchable as most popular, along with most and least agreed. 
+ &nbsp;
 
-### `npm start`
+ ## ***Technologies***
+ ![Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.cmarix.com%2Fblog%2Fwp-content%2Fuploads%2F2019%2F09%2FMern.jpg&f=1&nofb=1)
+ * JWT Authentication
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **Mobile Mockup**
+![Image](./assets/mock.png)
 
-### `npm test`
+## **Instructions for Developers (for local use)**
+* Fork and clone this repo
+* Navigate to project folder
+  * client folder - install depencenies^ and enter npm run start in terminal
+  * server folder - install dependencies^ and enter npm run dev in terminal
+* Open index.html
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Front-end Dependencies:
+   * npm i react-router-dom
 
-### `npm run build`
+*Back-end Dependencies:
+   * npm i nodemon
+   * npm i morgan
+   * npm i express mongoose
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ***Future Updates***
+- [X] ~~Submit README.md~~
+- Check back here for details on when we deploy!
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **CHECK OUT MORE ON [TRELLO](https://trello.com/invite/b/ytPCliNp/818f0103d877643543b2cb4d5d7c360f/indigo)**
+### **LINK TO [ERD](https://lucid.app/lucidchart/d52c89be-274c-49a2-a998-12b30f9be04f/edit?invitationId=inv_5aed0518-81f5-45cc-bc83-b2e437e54d5c)**
+### **LINK TO [React Component Hierarchy Diagram](https://lucid.app/lucidchart/900236fa-acaf-49f8-a4cd-2680e857449d/edit?invitationId=inv_fe35e785-473b-4115-aa9c-e860d0dc55c1)**
+&nbsp;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## ***Credits***
+### **ASSET MOCK-UPS BUILT WITH: [GRAVIT](https://www.designer.io/en/)**
+### **ERD AND COMPONENT HIERARCHY DIAGRAM CREATED WITH: [Lucidchart](https://www.lucidchart.com/pages/)**
+### **MERN Stack Image: [duckduckgo search](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.cmarix.com%2Fblog%2Fwp-content%2Fuploads%2F2019%2F09%2FMern.jpg&f=1&nofb=1)**
