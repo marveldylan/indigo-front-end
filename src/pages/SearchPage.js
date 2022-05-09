@@ -1,12 +1,12 @@
 import Navbar from "../components/Navbar"
 
-const Explore = (props) => {
+const SearchPage = (props) => {
 
     return (
-        <div className="Explore-container">
+        <div className="Search-container">
             <Navbar user = {props.user} authenticated = {props.authenticated} handleLogout = {props.handleLogout} />
         </div>
     )
 }
 
-export default Explore
+export default SearchPage

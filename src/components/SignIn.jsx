@@ -42,6 +42,7 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
                     onChange={handleChange}
                     required
                     className='password'
+                    autoComplete="on"
                 />
             <button onClick={handleSubmit} disabled={!formValues.email || !formValues.password} className='Login-button'>Log In</button> </form>
         </div>

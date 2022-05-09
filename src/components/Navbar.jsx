@@ -1,6 +1,14 @@
+import MyDetails from '../components/MyDetails'
+import Nav from '../components/Nav'
 
+const Navbar = (props) => {
 
-const Navbar = () => {
+    return (
+        <div className="Navbar-container">
+            <MyDetails user = {props.user} authenticated = {props.authenticated} handleLogout = {props.handleLogout} />
+            <Nav user = {props.user} authenticated = {props.authenticated} handleLogout = {props.handleLogout} />
+        </div>
+    )
 
 }
 

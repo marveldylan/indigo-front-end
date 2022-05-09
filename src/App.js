@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { CheckSession } from './services/Auth';
 import Navbar from './components/Nav';
 import Home from'./pages/Home';
+import SearchPage from './pages/SearchPage';
 import Explore from './pages/Explore';
 import MyLibrary from './pages/MyLibrary';
 import MyAccount from './pages/MyAccount';
+import NotSignedIn from './pages/NotSignedin';
 
 
 
@@ -39,19 +41,43 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        { user ? 
-          <Route path = "/" element={<Home
-            user={user}
-            authenticated={authenticated}
-          />} />
-        : <Route path="/" element={<Landing 
-            setUser={setUser}
-            toggleAuthenticated={toggleAuthenticated}
-          />} />
+        { user ?
+          <Routes>
+            <Route path = "/" element={<Home
+              user={user}
+              authenticated={authenticated}
+              handleLogout={handleLogout}
+              />
+            } />
+            <Route path = "/search" element={<SearchPage
+              user={user}
+              authenticated={authenticated}
+              handleLogout={handleLogout}
+            />} />
+            <Route path = "/library" element={<MyLibrary
+              user={user}
+              authenticated={authenticated}
+              handleLogout={handleLogout}
+            />} />
+            <Route path = "/explore" element={<Explore
+              user={user}
+              authenticated={authenticated}
+              handleLogout={handleLogout}
+            />} />
+          </Routes>
+        :  <Routes>
+            <Route path="/" element={<Landing 
+              setUser={setUser}
+              toggleAuthenticated={toggleAuthenticated}
+              />
+            } />
+            <Route path = "/search" element={<NotSignedIn />} />
+            <Route path = "/library" element={<NotSignedIn />} />
+            <Route path = "/explore" element={<NotSignedIn />} />
+            </Routes>
         }
+
         
-      </Routes>
     </div>
   );
 }
