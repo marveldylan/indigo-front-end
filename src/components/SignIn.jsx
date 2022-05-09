@@ -23,7 +23,7 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
 
     return(
         <div>
-            <form className='form'>
+            <form className='Sign-in-form'>
                 <input 
                     type="email"
                     name="email"
@@ -43,7 +43,7 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
                     required
                     className='password'
                 />
-            <button onClick={handleSubmit} disabled={!formValues.email || !formValues.password} className='login'>Log In</button> </form>
+            <button onClick={handleSubmit} disabled={!formValues.email || !formValues.password} className='Login-button'>Log In</button> </form>
         </div>
     )
 }
