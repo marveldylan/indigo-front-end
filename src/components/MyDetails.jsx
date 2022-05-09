@@ -1,10 +1,12 @@
+import { useState,useEffect } from "react";
 
 
-const MyDetails = () => {
+const MyDetails = ({ currentUser }) => {
+
 
     return (
         <div className="My-details-container">
-            <p>My Details Linked</p>
+            <h4>{currentUser.username}</h4>
         </div>
     )
 }
