@@ -52,7 +52,7 @@
 
 .Home-collapsed {
     display: grid;
-    grid-template-columns: 10% 25px 4fr 10%;
+    grid-template-columns: 10% 7px 4fr 10%;
 }
 
 .Nav-wrapper {
@@ -61,8 +61,12 @@
     top: 0px;
 }
 
+.Nav-collapse {
+    height: 50px;
+}
+
 .Navbar-uncollapsed {
-    height: 50vh;
+    height: 100vh;
     background-color: orange;
     overflow: auto;
     display: flex;
@@ -74,7 +78,8 @@
 }
 
 .My-details-container {
-    height: 35vh;
+    display: grid;
+    grid-template-rows: 110px 50px;
     background-color: brown;
 }
 
@@ -102,7 +107,14 @@
 }
 
 .My-details-info{
-    margin: 20px 0px 10px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: green;
+}
+
+.My-details-greeting {
+    padding-left: 10px;
 }
 
 .Nav-container {
@@ -122,4 +134,47 @@
 .Feed-container {
     height: 300vh;
     background-color: purple;
+}
+
+.Explore-nav {
+    height: 50px;
+    position: sticky;
+    top: 0px;
+    background-color: gray;
+    z-index: 2;
+}
+
+
+.Item-details-collapsed {
+    display: none;
+}
+
+.Item-details-expanded {
+    height: 75vh;
+    background-color: pink;
+    position: sticky;
+    top: 0px;
+}
+.Item-container-expanded {
+    position: sticky;
+    top: 0px;
+    background: white;
+}
+.Item-container-collapsed {
+    position: sticky;
+    top: 75vh;
+    background: white;
+}
+
+.Item-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.Item-card {
+    height: 20vh;
+    width: 100%;
+    background-color: red;
+    border-radius: 10px;
+    border: 2px solid black;
 }

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { GetAllGroups } from "../services/GroupServices";
+import { GetAllCreators } from "../services/UserServices";
 import ExploreNav from "../components/ExploreNav";
 
-const Explore = (props) => {
+const ExploreCreators = (props) => {
     let navigate = useNavigate()
 
     const [items, setItems] = useState([])
@@ -22,16 +22,16 @@ const Explore = (props) => {
     
     useEffect(() => {
         const handleItems = async () => {
-            const data = await GetAllGroups()
-            console.log(data.groups, 'groups')
+            const data = await GetAllCreators()
+            console.log(data.users, 'creators')
             if (sortBy === '') {
-                setItems(data.groups)
+                setItems(data.users)
             }
             else if (sortBy === 'AZ') {
                 // Alphabetical sort direction taken from Stack Overflow: https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
-                setItems(data.groups.sort((a, b) => a.name.localeCompare(b.name)))
+                setItems(data.users.sort((a, b) => a.username.localeCompare(b.username)))
             } else if (sortBy === 'ZA') {
-                setItems(data.groups.sort((a, b) => a.name.localeCompare(b.name)).reverse())
+                setItems(data.users.sort((a, b) => a.username.localeCompare(b.username)).reverse())
             }
 
         }
@@ -56,7 +56,7 @@ const Explore = (props) => {
                     {
                         items.map((item)=> (
                             <div className="Item-card" key={item._id} onClick={()=> showDetails(item)}>
-                                <h4 className="Item-name">{item.name}</h4>                              
+                                <h4 className="Item-name">{item.username}</h4>                              
                             </div>
                         ))
                     }
@@ -66,4 +66,4 @@ const Explore = (props) => {
     )
 }
 
-export default Explore
+export default ExploreCreators

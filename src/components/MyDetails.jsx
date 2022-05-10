@@ -23,7 +23,7 @@ const MyDetails = ({ currentUser }) => {
                 }                     
             </div>
             <div className="My-details-info">
-                <h4>Hey, <span><a className="Highlighted" onClick={()=>handleClick()}>{currentUser.first_name}</a></span></h4>
+                <h4 className="My-details-greeting">Hey, <span><a className="Highlighted" onClick={()=>handleClick()}>{currentUser.first_name}</a></span></h4>
             </div>
         </div>
     )

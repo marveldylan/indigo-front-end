@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { GetAllGroups } from "../services/GroupServices";
+import { GetAllChannels } from "../services/ChannelServices";
 import ExploreNav from "../components/ExploreNav";
 
-const Explore = (props) => {
+const ExploreChannels = (props) => {
     let navigate = useNavigate()
 
     const [items, setItems] = useState([])
@@ -22,16 +22,16 @@ const Explore = (props) => {
     
     useEffect(() => {
         const handleItems = async () => {
-            const data = await GetAllGroups()
-            console.log(data.groups, 'groups')
+            const data = await GetAllChannels()
+            console.log(data.channels, 'channels')
             if (sortBy === '') {
-                setItems(data.groups)
+                setItems(data.channels)
             }
             else if (sortBy === 'AZ') {
                 // Alphabetical sort direction taken from Stack Overflow: https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
-                setItems(data.groups.sort((a, b) => a.name.localeCompare(b.name)))
+                setItems(data.channels.sort((a, b) => a.name.localeCompare(b.name)))
             } else if (sortBy === 'ZA') {
-                setItems(data.groups.sort((a, b) => a.name.localeCompare(b.name)).reverse())
+                setItems(data.channels.sort((a, b) => a.name.localeCompare(b.name)).reverse())
             }
 
         }
@@ -66,4 +66,4 @@ const Explore = (props) => {
     )
 }
 
-export default Explore
+export default ExploreChannels

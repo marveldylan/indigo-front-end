@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { GetAllGroups } from "../services/GroupServices";
 import ExploreNav from "../components/ExploreNav";
 
-const Explore = (props) => {
+const ExploreGroups = (props) => {
     let navigate = useNavigate()
 
     const [items, setItems] = useState([])
@@ -66,4 +66,4 @@ const Explore = (props) => {
     )
 }
 
-export default Explore
+export default ExploreGroups
