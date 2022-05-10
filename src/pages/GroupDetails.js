@@ -20,6 +20,7 @@ const GroupDetails = () => {
 
     return (
         <h1>Group Details</h1>
+        <h2>Tests</h2>
     )
 }
 
