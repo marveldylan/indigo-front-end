@@ -39,6 +39,8 @@ function App() {
     }
   }, [])
 
+
+
   return (
     <div className="App">
         { user ?
@@ -64,6 +66,11 @@ function App() {
               authenticated={authenticated}
               handleLogout={handleLogout}
             />} />
+            <Route path = "/account" element={<MyAccount
+              user={user}
+              authenticated={authenticated}
+              handleLogout={handleLogout}
+            />} />
           </Routes>
         :  <Routes>
             <Route path="/" element={<Landing 
@@ -74,6 +81,7 @@ function App() {
             <Route path = "/search" element={<NotSignedIn />} />
             <Route path = "/library" element={<NotSignedIn />} />
             <Route path = "/explore" element={<NotSignedIn />} />
+            <Route path = "/account" element={<NotSignedIn />} />
             </Routes>
         }
 

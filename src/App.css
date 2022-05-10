@@ -40,16 +40,32 @@
     justify-content: space-between;
 }
 
-.Home-container {
+.Home-uncollapsed {
     display: grid;
     grid-template-columns: 10% 1fr 4fr 10%;
 }
 
-.Navbar-container {
+.Home-collapsed {
+    display: grid;
+    grid-template-columns: 10% 25px 4fr 10%;
+}
+
+.Nav-wrapper {
     height: 100vh;
+    position: sticky;
+    top: 0px;
+}
+
+.Navbar-uncollapsed {
+    height: 50vh;
     background-color: orange;
+    overflow: auto;
     display: flex;
     flex-direction: column;
+}
+
+.Navbar-collapsed {
+    display: none;
 }
 
 .My-details-container {
@@ -72,6 +88,6 @@
 }
 
 .Feed-container {
-    height: 100vh;
+    height: 300vh;
     background-color: purple;
 }
