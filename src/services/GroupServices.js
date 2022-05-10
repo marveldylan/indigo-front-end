@@ -8,3 +8,12 @@ export const GetAllGroups = async () => {
         throw error
     }
 }
+
+export const GetGroupById = async (id) => {
+    try {
+        const res = await Client.get(`/groups/${id}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}

@@ -4,20 +4,18 @@ import { GetAllGroups } from "../services/GroupServices";
 import ExploreNav from "../components/ExploreNav";
 
 const ExploreGroups = (props) => {
+
     let navigate = useNavigate()
 
     const [items, setItems] = useState([])
     const [sortBy, setSort] = useState('')
-    const [detailsState, setDetailsState] = useState('Item-details-collapsed')
-    const [itemState, setItemState] = useState('Item-container-expanded')
 
     const handleSort = (event) => {
         setSort(event.target.value);
     }
 
-    const showDetails = (item) => {
-        setDetailsState('Item-details-expanded')
-        setItemState('Item-container-collapsed')
+    const handleClick = (id) => {
+        navigate(`/explore/groups/${id}`)
     }
     
     useEffect(() => {
@@ -36,26 +34,28 @@ const ExploreGroups = (props) => {
 
         }
         handleItems()
-    }, [sortBy, detailsState])
+    }, [sortBy])
 
     return (
         <div className="Main-container">
             <ExploreNav />
-            <div className={detailsState}>
-
-            </div>
             <div className="Item-container">
-                <div className={itemState}>
-                    <label>Sort: </label>
-                    <select className="Item-sort" value={sortBy} onChange={handleSort}>
-                        <option value="AZ">A - Z</option>
-                        <option value="ZA">Z - A</option>
-                    </select>
+                <div className='Item-container-expanded'>
+                    <div className="Item-sort-container">
+                        <label className="Item-sort-label">Sort: </label>
+                        <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
+                            <option value="AZ">A - Z</option>
+                            <option value="ZA">Z - A</option>
+                        </select>
+                    </div>
+                    <div className="Item-back-arrow">
+                    </div>
+                    <div></div>
                 </div>
                 <div className="Item-grid">
                     {
                         items.map((item)=> (
-                            <div className="Item-card" key={item._id} onClick={()=> showDetails(item)}>
+                            <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
                                 <h4 className="Item-name">{item.name}</h4>                              
                             </div>
                         ))

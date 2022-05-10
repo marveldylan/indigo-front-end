@@ -10,6 +10,7 @@ import Explore from './pages/Explore';
 import MyLibrary from './pages/MyLibrary';
 import MyAccount from './pages/MyAccount';
 import ExploreGroups  from './pages/ExploreGroups';
+import GroupDetails from './pages/GroupDetails';
 import ExploreChannels  from './pages/ExploreChannels';
 import ExploreCreators  from './pages/ExploreCreators';
 import NotSignedIn from './pages/NotSignedin';
@@ -115,6 +116,11 @@ function App() {
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
+                <Route path = "/explore/groups/:id" element={<GroupDetails
+                  user={user}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
                 <Route path = "/explore/channels" element={<ExploreChannels
                   user={user}
                   authenticated={authenticated}
@@ -144,8 +150,11 @@ function App() {
             <Route path = "/library" element={<NotSignedIn />} />
             <Route path = "/explore" element={<NotSignedIn />} />
             <Route path = "/explore/groups" element={<NotSignedIn />} />
+            <Route path = "/explore/groups/:id" element={<NotSignedIn />} />
             <Route path = "/explore/channels" element={<NotSignedIn />} />
+            <Route path = "/explore/channels/:id" element={<NotSignedIn />} />
             <Route path = "/explore/creators" element={<NotSignedIn />} />
+            <Route path = "/explore/creators/:id" element={<NotSignedIn />} />
             <Route path = "/account" element={<NotSignedIn />} />
             </Routes>
         }

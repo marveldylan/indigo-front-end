@@ -2,24 +2,20 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GetAllGroups } from "../services/GroupServices";
 import ExploreNav from "../components/ExploreNav";
-import GroupDetails from '../components/GroupDetails';
-import { BsChevronDoubleDown } from 'react-icons/bs';
 
-const Explore = (props) => {
+const Explore = () => {
+
     let navigate = useNavigate()
 
     const [items, setItems] = useState([])
     const [sortBy, setSort] = useState('')
-    const [detailsState, setDetailsState] = useState('Item-details-collapsed')
-    const [itemState, setItemState] = useState('Item-container-expanded')
 
     const handleSort = (event) => {
         setSort(event.target.value);
     }
 
-    const showDetails = (item) => {
-        setDetailsState('Item-details-expanded')
-        setItemState('Item-container-collapsed')
+    const handleClick = (id) => {
+        navigate(`/explore/groups/${id}`)
     }
     
     useEffect(() => {
@@ -38,16 +34,13 @@ const Explore = (props) => {
 
         }
         handleItems()
-    }, [sortBy, detailsState])
+    }, [sortBy])
 
     return (
         <div className="Main-container">
             <ExploreNav />
-            <div className={detailsState}>
-                
-            </div>
             <div className="Item-container">
-                <div className={itemState}>
+                <div className='Item-container-expanded'>
                     <div className="Item-sort-container">
                         <label className="Item-sort-label">Sort: </label>
                         <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
@@ -56,14 +49,13 @@ const Explore = (props) => {
                         </select>
                     </div>
                     <div className="Item-back-arrow">
-                        <BsChevronDoubleDown className="Chevron" />
                     </div>
                     <div></div>
                 </div>
                 <div className="Item-grid">
                     {
                         items.map((item)=> (
-                            <div className="Item-card" key={item._id} onClick={()=> showDetails(item)}>
+                            <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
                                 <h4 className="Item-name">{item.name}</h4>                              
                             </div>
                         ))
