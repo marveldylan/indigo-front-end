@@ -2,7 +2,6 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Landing from './pages/Landing';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { CheckSession } from './services/Auth';
 import Navbar from './components/Navbar';
 import Home from'./pages/Home';
@@ -65,7 +64,7 @@ function App() {
     if (user) {
       handleUser(user.id)
     }
-}, [])
+}, [user])
 
 
   return (

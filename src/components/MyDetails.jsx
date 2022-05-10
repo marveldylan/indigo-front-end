@@ -1,4 +1,3 @@
-import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -14,17 +13,17 @@ const MyDetails = ({ currentUser }) => {
             <div className="My-details-images">
                 {
                     (currentUser.cover_image) ?
-                    <img className="My-details-cover-image" src="" />
-                    : <img className="My-details-cover-image" src={currentUser.cover_image} />
+                    <img className="My-details-cover-image" src={currentUser.cover_image}  />
+                    : <img className="My-details-cover-image" src=""/>
                 }
                 {
                     (currentUser.profile_image) ?
-                    <img className="My-details-profile-image" src="" />
-                    : <img className="My-details-profile-image" src={currentUser.profile_image} />
+                    <img className="My-details-profile-image" src={currentUser.profile_image} />
+                    : <img className="My-details-profile-image" src="" />
                 }                     
             </div>
             <div className="My-details-info">
-                <h4 onClick={()=>handleClick()}>Hey, {currentUser.username}</h4>
+                <h4>Hey, <span><a className="Highlighted" onClick={()=>handleClick()}>{currentUser.first_name}</a></span></h4>
             </div>
         </div>
     )
