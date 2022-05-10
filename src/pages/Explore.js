@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GetAllGroups } from "../services/GroupServices";
 import ExploreNav from "../components/ExploreNav";
+import GroupDetails from '../components/GroupDetails';
+import { BsChevronDoubleDown } from 'react-icons/bs';
 
 const Explore = (props) => {
     let navigate = useNavigate()
@@ -42,15 +44,21 @@ const Explore = (props) => {
         <div className="Main-container">
             <ExploreNav />
             <div className={detailsState}>
-
+                
             </div>
             <div className="Item-container">
                 <div className={itemState}>
-                    <label>Sort: </label>
-                    <select className="Item-sort" value={sortBy} onChange={handleSort}>
-                        <option value="AZ">A - Z</option>
-                        <option value="ZA">Z - A</option>
-                    </select>
+                    <div className="Item-sort-container">
+                        <label className="Item-sort-label">Sort: </label>
+                        <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
+                            <option value="AZ">A - Z</option>
+                            <option value="ZA">Z - A</option>
+                        </select>
+                    </div>
+                    <div className="Item-back-arrow">
+                        <BsChevronDoubleDown className="Chevron" />
+                    </div>
+                    <div></div>
                 </div>
                 <div className="Item-grid">
                     {
