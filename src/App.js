@@ -4,13 +4,14 @@ import Landing from './pages/Landing';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckSession } from './services/Auth';
-import Navbar from './components/Nav';
+import Navbar from './components/Navbar';
 import Home from'./pages/Home';
 import SearchPage from './pages/SearchPage';
 import Explore from './pages/Explore';
 import MyLibrary from './pages/MyLibrary';
 import MyAccount from './pages/MyAccount';
 import NotSignedIn from './pages/NotSignedin';
+import { GetUserById } from "./services/UserServices";
 
 
 
@@ -18,6 +19,22 @@ function App() {
 
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState({})
+  const [navState, setNavState] = useState('Navbar-uncollapsed')
+  const [homeState, setHomeState] = useState('Home-uncollapsed')
+
+  const handleNav = () => {
+      if(navState === 'Navbar-uncollapsed'){
+          setNavState('Navbar-collapsed')
+          setHomeState('Home-collapsed')
+          console.log(navState, homeState)
+      } else  if (navState === 'Navbar-collapsed') {
+          setNavState('Navbar-uncollapsed')
+          setHomeState('Home-uncollapsed')
+          console.log(navState, homeState)
+      }
+  }
+
 
   const checkToken = async () => {
     const user = await CheckSession()
@@ -39,39 +56,67 @@ function App() {
     }
   }, [])
 
+  useEffect(()=> {
+    const handleUser = async (id) => {
+        const data = await GetUserById(id)
+        setCurrentUser(data.user)
+        console.log(currentUser)
+    }
+    if (user) {
+      handleUser(user.id)
+    }
+}, [])
 
 
   return (
     <div className="App">
         { user ?
-          <Routes>
-            <Route path = "/" element={<Home
-              user={user}
-              authenticated={authenticated}
-              handleLogout={handleLogout}
-              />
-            } />
-            <Route path = "/search" element={<SearchPage
-              user={user}
-              authenticated={authenticated}
-              handleLogout={handleLogout}
-            />} />
-            <Route path = "/library" element={<MyLibrary
-              user={user}
-              authenticated={authenticated}
-              handleLogout={handleLogout}
-            />} />
-            <Route path = "/explore" element={<Explore
-              user={user}
-              authenticated={authenticated}
-              handleLogout={handleLogout}
-            />} />
-            <Route path = "/account" element={<MyAccount
-              user={user}
-              authenticated={authenticated}
-              handleLogout={handleLogout}
-            />} />
-          </Routes>
+          <div className={homeState}>
+            <div className="Margin"></div>
+            <div className="Nav-wrapper">
+                <div className="Nav-collapse">
+                    <button onClick={()=>handleNav()}>Collapse</button>
+                </div>
+                <Navbar 
+                    user = {user} 
+                    currentUser = {currentUser} 
+                    authenticated = {authenticated} 
+                    handleLogout = {handleLogout} 
+                    navState = {navState}
+                />
+            </div>
+            <div className="Viewport-container">
+              <Routes>
+                <Route path = "/" element={<Home
+                  user={user}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                  />
+                } />
+                <Route path = "/search" element={<SearchPage
+                  user={user}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
+                <Route path = "/library" element={<MyLibrary
+                  user={user}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
+                <Route path = "/explore" element={<Explore
+                  user={user}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
+                <Route path = "/account" element={<MyAccount
+                  user={user}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
+            </Routes>
+            </div>
+            <div className="Margin"></div>
+          </div>
         :  <Routes>
             <Route path="/" element={<Landing 
               setUser={setUser}
