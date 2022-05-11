@@ -9,6 +9,7 @@ const Explore = () => {
 
     const [items, setItems] = useState([])
     const [sortBy, setSort] = useState('')
+    const [trending, setTrending] = useState([])
 
     const handleSort = (event) => {
         setSort(event.target.value);
@@ -22,6 +23,7 @@ const Explore = () => {
         const handleItems = async () => {
             const data = await GetAllGroups()
             console.log(data.groups, 'groups')
+            setTrending(data.groups.sort((a, b) => a.views - b.views).slice(0, 5))
             if (sortBy === '') {
                 setItems(data.groups)
             }
@@ -40,8 +42,21 @@ const Explore = () => {
         <div className="Main-container">
             <ExploreNav />
             <div className="Item-container">
+                <div className="Trending-container">
+                    <p>Trending</p>
+                    <div className="Trending-grid">
+                        {
+                            trending.map((item)=> (
+                                <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
+                                    <h4 className="Item-name">{item.name}</h4>                              
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
                 <div className='Item-container-expanded'>
                     <div className="Item-sort-container">
+                        <h4>Groups </h4>
                         <label className="Item-sort-label">Sort: </label>
                         <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
                             <option value="AZ">A - Z</option>
