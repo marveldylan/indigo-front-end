@@ -208,13 +208,38 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+
+
 .Item-card {
     height: 20vh;
     width: 96%;
-    background-color: red;
+    background-color: whitesmoke;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid gray;
     margin: 5px;
+}
+
+.Item-card:hover {
+    animation-name: item-bounce;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.Item-image {
+    width: 100%;
+    height: 80%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+}
+
+.Item-name-container {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: -10%;
 }
 
 .Account-cover-image {
@@ -233,4 +258,10 @@
     margin-top: -250px;
     padding-left: 20px;
     border: 10px solid white;
+}
+
+@keyframes item-bounce {
+    0% {transform: translateY(0)}
+    100% {transform: translateY(-10px)}
+
 }

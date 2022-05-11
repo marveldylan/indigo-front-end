@@ -46,8 +46,11 @@ const Explore = () => {
                         {
                             trending.map((item)=> (
                                 <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
-                                    <h4 className="Item-name">{item.name}</h4>                              
-                                </div>
+                                <img className="Item-image" src={item.cover_image} />
+                                <div className="Item-name-container">
+                                <h5 className="Item-name">{item.name}</h5>   
+                                </div>                           
+                            </div>
                             ))
                         }
                     </div>
@@ -69,7 +72,10 @@ const Explore = () => {
                     {
                         items.map((item)=> (
                             <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
-                                <h4 className="Item-name">{item.name}</h4>                              
+                                <img className="Item-image" src={item.cover_image} />
+                                <div className="Item-name-container">
+                                <h5 className="Item-name">{item.name}</h5>   
+                                </div>                           
                             </div>
                         ))
                     }
