@@ -133,6 +133,7 @@ function App() {
                 />} />
                 <Route path = "/account" element={<MyAccount
                   user={user}
+                  currentUser={currentUser}
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
