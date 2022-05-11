@@ -5,7 +5,7 @@ import Nav from '../components/Nav'
 const Navbar = (props) => {
 
     useEffect(()=>{
-
+        console.log('Navbar useEffect fired')
     }, [])
     return (
         <div className={props.navState}>

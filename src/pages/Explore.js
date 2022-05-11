@@ -8,7 +8,7 @@ const Explore = () => {
     let navigate = useNavigate()
 
     const [items, setItems] = useState([])
-    const [sortBy, setSort] = useState('')
+    const [sortBy, setSort] = useState('AZ')
     const [trending, setTrending] = useState([])
 
     const handleSort = (event) => {
@@ -22,12 +22,10 @@ const Explore = () => {
     useEffect(() => {
         const handleItems = async () => {
             const data = await GetAllGroups()
+            console.log('Explore useEffect fired')
             console.log(data.groups, 'groups')
             setTrending(data.groups.sort((a, b) => a.views - b.views).slice(0, 5))
-            if (sortBy === '') {
-                setItems(data.groups)
-            }
-            else if (sortBy === 'AZ') {
+            if (sortBy === 'AZ') {
                 // Alphabetical sort direction taken from Stack Overflow: https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
                 setItems(data.groups.sort((a, b) => a.name.localeCompare(b.name)))
             } else if (sortBy === 'ZA') {

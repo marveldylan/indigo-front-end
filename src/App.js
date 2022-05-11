@@ -52,6 +52,7 @@ function App() {
   }
 
   useEffect(() => {
+    console.log('App.js useEffect1 fired')
     const token = localStorage.getItem('token')
 
     if (token) {
@@ -60,6 +61,7 @@ function App() {
   }, [])
 
   useEffect(()=> {
+    console.log('App.js useEffect 2 fired')
     const handleUser = async (id) => {
         const data = await GetUserById(id)
         setCurrentUser(data.user)
