@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GetAllCategories } from "../services/CategoryServices";
 import ExploreNav from "../components/ExploreNav";
+import ItemMap from "../components/ItemMap";
 
 const Explore = () => {
 
@@ -42,18 +43,7 @@ const Explore = () => {
             <div className="Item-container">
                 <div className="Trending-container">
                     <p>Trending</p>
-                    <div className="Trending-grid">
-                        {
-                            trending.map((item)=> (
-                                <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
-                                <img className="Item-image" src={item.cover_image} />
-                                <div className="Item-name-container">
-                                <h5 className="Item-name">{item.name}</h5>   
-                                </div>                           
-                            </div>
-                            ))
-                        }
-                    </div>
+                    <ItemMap items={trending} basePath='/explore/categories/' />
                 </div>
                 <div className='Item-container-expanded'>
                     <div className="Item-sort-container">
@@ -68,18 +58,7 @@ const Explore = () => {
                     </div>
                     <div></div>
                 </div>
-                <div className="Item-grid">
-                    {
-                        items.map((item)=> (
-                            <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
-                                <img className="Item-image" src={item.cover_image} />
-                                <div className="Item-name-container">
-                                <h5 className="Item-name">{item.name}</h5>   
-                                </div>                           
-                            </div>
-                        ))
-                    }
-                </div>
+                <ItemMap items={items} basePath='/explore/categories/' />
             </div>
         </div>
     )

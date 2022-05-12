@@ -13,7 +13,7 @@ const Groups = (props) => {
             setGroups(data.groups)
         }
         handleGroups()
-    })
+    }, [])
 
     return (
         <ItemMap items={groups} basePath='/explore/groups/' />
