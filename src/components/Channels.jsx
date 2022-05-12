@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import { GetChannelsByCategory } from "../services/GroupServices";
+import ItemMap from "./ItemMap";
 
 
 const Channels = (props) => {
@@ -12,9 +14,7 @@ const Channels = (props) => {
     })
 
     return (
-        <div>
-
-        </div>
+        <ItemMap items={channels} basePath='/explore/channels/' />
     )
 }
 

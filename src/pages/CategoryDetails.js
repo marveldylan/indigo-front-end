@@ -36,10 +36,11 @@ const CategoryDetails = () => {
                 <h4>Followers: {category.follower_counter}</h4>
                 <h4>Channels: {category.channel_counter}</h4>
             </div>
-            <div className="Group-grid">
+            <div className="Group-container">
+                <h3>Popular Groups</h3>
                 <Groups categoryId = {id}/>
             </div>
-            <div className="Channel-grid">
+            <div className="Channel-container">
                 <Channels categoryId = {id}/>
             </div>
         </div>

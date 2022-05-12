@@ -9,7 +9,7 @@ export const GetAllGroups = async () => {
     }
 }
 
-export const GetGroupByCategory = async (id) => {
+export const GetGroupsByCategory = async (id) => {
     try {
         const res = await Client.get(`/groups/category/${id}`)
         return res.data

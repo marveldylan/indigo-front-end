@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { GetGroupByCategory } from "../services/GroupServices";
+import { GetGroupsByCategory } from "../services/GroupServices";
+import ItemMap from "./ItemMap";
 
 
 const Groups = (props) => {
@@ -8,22 +9,14 @@ const Groups = (props) => {
 
     useEffect(()=> {
         const handleGroups = async () => {
-            const data = await GetGroupByCategory(props.categoryId)
+            const data = await GetGroupsByCategory(props.categoryId)
             setGroups(data.groups)
         }
         handleGroups()
     })
 
     return (
-        <div className="Group-grid">
-            {
-                groups.map((groups)=> (
-                    <div>
-                        
-                    </div>
-                ))
-            }
-        </div>
+        <ItemMap items={groups} basePath='/explore/groups/' />
     )
 }
 
