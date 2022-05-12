@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { GetAllGroups } from "../services/GroupServices";
+import { GetAllCategories } from "../services/CategoryServices";
 import ExploreNav from "../components/ExploreNav";
 
 const Explore = () => {
@@ -16,20 +16,20 @@ const Explore = () => {
     }
 
     const handleClick = (id) => {
-        navigate(`/explore/groups/${id}`)
+        navigate(`/explore/categories/${id}`)
     }
     
     useEffect(() => {
         const handleItems = async () => {
-            const data = await GetAllGroups()
+            const data = await GetAllCategories()
             console.log('Explore useEffect fired')
-            console.log(data.groups, 'groups')
-            setTrending(data.groups.sort((a, b) => a.views - b.views).slice(0, 5))
+            console.log(data.categories, 'categories')
+            setTrending(data.categories.sort((a, b) => a.views - b.views).slice(0, 5))
             if (sortBy === 'AZ') {
                 // Alphabetical sort direction taken from Stack Overflow: https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
-                setItems(data.groups.sort((a, b) => a.name.localeCompare(b.name)))
+                setItems(data.categories.sort((a, b) => a.name.localeCompare(b.name)))
             } else if (sortBy === 'ZA') {
-                setItems(data.groups.sort((a, b) => a.name.localeCompare(b.name)).reverse())
+                setItems(data.categories.sort((a, b) => a.name.localeCompare(b.name)).reverse())
             }
 
         }
@@ -57,7 +57,7 @@ const Explore = () => {
                 </div>
                 <div className='Item-container-expanded'>
                     <div className="Item-sort-container">
-                        <h4>Groups </h4>
+                        <h4>Categories </h4>
                         <label className="Item-sort-label">Sort: </label>
                         <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
                             <option value="AZ">A - Z</option>

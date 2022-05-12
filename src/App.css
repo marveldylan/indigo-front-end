@@ -8,6 +8,9 @@
 
 .Highlighted {
     color: blue;
+}
+
+.Highlighted:hover {
     text-decoration: underline;
 }
 
@@ -137,11 +140,24 @@
 }
 
 .Explore-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     height: 50px;
     position: sticky;
     top: 0px;
     background-color: gray;
     z-index: 2;
+}
+
+.Explore-link {
+    margin: 0px 10px;
+    text-decoration: none;
+}
+
+.Explore-link:hover {
+    text-decoration: underline;
 }
 
 

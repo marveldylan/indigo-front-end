@@ -10,7 +10,7 @@ import Explore from './pages/Explore';
 import MyLibrary from './pages/MyLibrary';
 import MyAccount from './pages/MyAccount';
 import ExploreGroups  from './pages/ExploreGroups';
-import GroupDetails from './pages/GroupDetails';
+import CategoryDetails from './pages/CategoryDetails';
 import ExploreChannels  from './pages/ExploreChannels';
 import ExploreCreators  from './pages/ExploreCreators';
 import NotSignedIn from './pages/NotSignedin';
@@ -118,7 +118,7 @@ function App() {
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
-                <Route path = "/explore/groups/:id" element={<GroupDetails
+                <Route path = "/explore/categories/:id" element={<CategoryDetails
                   user={user}
                   authenticated={authenticated}
                   handleLogout={handleLogout}
