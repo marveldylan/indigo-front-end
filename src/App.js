@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Landing from './pages/Landing';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,createContext } from 'react';
 import { CheckSession } from './services/Auth';
 import Navbar from './components/Navbar';
 import Home from'./pages/Home';
@@ -19,6 +19,8 @@ import { GetUserById } from "./services/UserServices";
 
 
 function App() {
+
+  const UserContext = createContext()
 
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
@@ -76,6 +78,7 @@ function App() {
   return (
     <div className="App">
         { user ?
+          <UserContext.Provider value={currentUser}>
           <div className={homeState}>
             <div className="Margin"></div>
             <div className="Nav-wrapper">
@@ -143,6 +146,7 @@ function App() {
             </div>
             <div className="Margin"></div>
           </div>
+          </UserContext.Provider>
         :  <Routes>
             <Route path="/" element={<Landing 
               setUser={setUser}

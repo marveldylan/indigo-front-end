@@ -37,10 +37,11 @@ const CategoryDetails = () => {
                 <h4>Channels: {category.channel_counter}</h4>
             </div>
             <div className="Group-container">
-                <h3>Popular Groups</h3>
+                <h3>Groups</h3>
                 <Groups categoryId = {id}/>
             </div>
             <div className="Channel-container">
+                <h3>Channels</h3>
                 <Channels categoryId = {id}/>
             </div>
         </div>
