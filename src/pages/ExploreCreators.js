@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { GetAllCreators } from "../services/UserServices";
 import ExploreNav from "../components/ExploreNav";
 import { BsChevronDoubleDown } from 'react-icons/bs';
+import CreatorDetails from "../components/CreatorDetails";
 
 const ExploreCreators = (props) => {
     let navigate = useNavigate()
@@ -11,7 +12,7 @@ const ExploreCreators = (props) => {
     const [sortBy, setSort] = useState('')
     const [detailsState, setDetailsState] = useState('Item-details-collapsed')
     const [itemState, setItemState] = useState('Item-container-expanded')
-    const [item, setItem] = useState({})
+    const [item, setItem] = useState('')
 
     const handleSort = (event) => {
         setSort(event.target.value);
@@ -52,20 +53,30 @@ const ExploreCreators = (props) => {
         <div className="Main-container">
             <ExploreNav />
             <div className={detailsState}>
+            {
+                    item ?
+                    <CreatorDetails creator={item} />
+                    : ''
+                }
             </div>
             <div className="Item-container">
                 <div className={itemState}>
+                <div className="Item-header-container">
+                        <h4>Explore Creators</h4>
+                    </div>
+                    <div className="Item-back-arrow">
+                        {
+                            item ?
+                            <a onClick={()=> handleDetails()}><BsChevronDoubleDown className="Chevron" /></a>
+                            : ''
+                        }
+                    </div>
                     <div className="Item-sort-container">
-                        <label className="Item-sort-label">Sort: </label>
                         <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
                             <option value="AZ">A - Z</option>
                             <option value="ZA">Z - A</option>
                         </select>
                     </div>
-                    <div className="Item-back-arrow">
-                        <a onClick={()=> handleDetails()}><BsChevronDoubleDown className="Chevron" /></a>
-                    </div>
-                    <div></div>
                 </div>
                 <div className="Item-grid">
                     {

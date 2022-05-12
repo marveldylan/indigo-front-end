@@ -15,10 +15,6 @@ const Explore = () => {
     const handleSort = (event) => {
         setSort(event.target.value);
     }
-
-    const handleClick = (id) => {
-        navigate(`/explore/categories/${id}`)
-    }
     
     useEffect(() => {
         const handleItems = async () => {
@@ -41,22 +37,22 @@ const Explore = () => {
         <div className="Main-container">
             <ExploreNav />
             <div className="Item-container">
-                <div className="Trending-container">
-                    <p>Trending</p>
-                    <ItemMap items={trending} basePath='/explore/categories/' />
+                <div className="Item-header-container">
+                    <h4>Trending</h4>
                 </div>
+                <ItemMap items={trending} basePath='/explore/categories/' />
                 <div className='Item-container-expanded'>
+                    <div className="Item-header-container">
+                        <h4>Explore Categories</h4>
+                    </div>
+                    <div className="Item-back-arrow">
+                    </div>
                     <div className="Item-sort-container">
-                        <h4>Categories </h4>
-                        <label className="Item-sort-label">Sort: </label>
                         <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
                             <option value="AZ">A - Z</option>
                             <option value="ZA">Z - A</option>
                         </select>
                     </div>
-                    <div className="Item-back-arrow">
-                    </div>
-                    <div></div>
                 </div>
                 <ItemMap items={items} basePath='/explore/categories/' />
             </div>

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { GetAllChannels } from "../services/ChannelServices";
 import ExploreNav from "../components/ExploreNav";
 import { BsChevronDoubleDown } from 'react-icons/bs';
+import ChannelDetails from '../components/ChannelDetails'
 
 const ExploreChannels = (props) => {
     let navigate = useNavigate()
@@ -11,7 +12,7 @@ const ExploreChannels = (props) => {
     const [sortBy, setSort] = useState('')
     const [detailsState, setDetailsState] = useState('Item-details-collapsed')
     const [itemState, setItemState] = useState('Item-container-expanded')
-    const [item, setItem] = useState({})
+    const [item, setItem] = useState('')
 
     const handleSort = (event) => {
         setSort(event.target.value);
@@ -52,30 +53,43 @@ const ExploreChannels = (props) => {
         <div className="Main-container">
             <ExploreNav />
             <div className={detailsState}>
+                {
+                    item ?
+                    <ChannelDetails channel={item} />
+                    : ''
+                }
             </div>
             <div className="Item-container">
                 <div className={itemState}>
+                    <div className="Item-header-container">
+                        <h4>Explore Channels</h4>
+                    </div>
+                    <div className="Item-back-arrow">
+                        {
+                            item ?
+                            <a onClick={()=> handleDetails()}><BsChevronDoubleDown className="Chevron" /></a>
+                            : ''
+                        }
+                    </div>
                     <div className="Item-sort-container">
-                        <label className="Item-sort-label">Sort: </label>
                         <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
                             <option value="AZ">A - Z</option>
                             <option value="ZA">Z - A</option>
                         </select>
                     </div>
-                    <div className="Item-back-arrow">
-                        <a onClick={()=> handleDetails()}><BsChevronDoubleDown className="Chevron" /></a>
-                    </div>
-                    <div></div>
                 </div>
                 <div className="Item-grid">
-                    {
-                        items.map((item)=> (
-                            <div className="Item-card" key={item._id} onClick={()=> handleDetails(item)}>
-                                <h4 className="Item-name">{item.name}</h4>                              
-                            </div>
-                        ))
-                    }
-                </div>
+                {
+                    items.map((item)=> (
+                        <div className="Item-card" key={item._id} onClick={()=> handleDetails(item)}>
+                            <img className="Item-image" src={item.cover_image} />
+                            <div className="Item-name-container">
+                            <h5 className="Item-name">{item.name}</h5>   
+                            </div>                           
+                        </div>
+                    ))
+                }
+            </div>
             </div>
         </div>
     )

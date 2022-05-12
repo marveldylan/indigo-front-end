@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GetAllGroups } from "../services/GroupServices";
 import ExploreNav from "../components/ExploreNav";
+import ItemMap from "../components/ItemMap";
 
 const ExploreGroups = (props) => {
 
@@ -12,10 +13,6 @@ const ExploreGroups = (props) => {
 
     const handleSort = (event) => {
         setSort(event.target.value);
-    }
-
-    const handleClick = (id) => {
-        navigate(`/explore/groups/${id}`)
     }
     
     useEffect(() => {
@@ -41,26 +38,19 @@ const ExploreGroups = (props) => {
             <ExploreNav />
             <div className="Item-container">
                 <div className='Item-container-expanded'>
+                <div className="Item-header-container">
+                        <h4>Explore Groups</h4>
+                    </div>
+                    <div className="Item-back-arrow">
+                    </div>
                     <div className="Item-sort-container">
-                        <label className="Item-sort-label">Sort: </label>
                         <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
                             <option value="AZ">A - Z</option>
                             <option value="ZA">Z - A</option>
                         </select>
                     </div>
-                    <div className="Item-back-arrow">
-                    </div>
-                    <div></div>
                 </div>
-                <div className="Item-grid">
-                    {
-                        items.map((item)=> (
-                            <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
-                                <h4 className="Item-name">{item.name}</h4>                              
-                            </div>
-                        ))
-                    }
-                </div>
+                <ItemMap items={items} basePath='/explore/groups/' />
             </div>
         </div>
     )

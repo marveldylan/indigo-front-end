@@ -11,17 +11,17 @@ const ItemMap = ({ items, basePath }) => {
 
         return (
             <div className="Item-grid">
-            {
-                items.map((item)=> (
-                    <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
-                        <img className="Item-image" src={item.cover_image} />
-                        <div className="Item-name-container">
-                        <h5 className="Item-name">{item.name}</h5>   
-                        </div>                           
-                    </div>
-                ))
-            }
-        </div>
+                {
+                    items.map((item)=> (
+                        <div className="Item-card" key={item._id} onClick={()=> handleClick(item._id)}>
+                            <img className="Item-image" src={item.cover_image} />
+                            <div className="Item-name-container">
+                            <h5 className="Item-name">{item.name}</h5>   
+                            </div>                           
+                        </div>
+                    ))
+                }
+            </div>
         )
 }
 

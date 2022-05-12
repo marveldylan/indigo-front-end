@@ -171,6 +171,7 @@
     position: sticky;
     top: 0px;
 }
+
 .Item-container-expanded {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -186,18 +187,19 @@
     background: white;
 }
 
+.Item-header-container {
+    padding-left: 10px;
+}
+
 .Item-sort-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: flex-start;
     align-items: center;
 }
 
-.Item-sort-label {
-
-}
 .Item-sort-listbox {
-
+    margin-right: 10px;
 }
 
 .Item-back-arrow {
@@ -220,6 +222,7 @@
 
 
 .Item-grid {
+    padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
