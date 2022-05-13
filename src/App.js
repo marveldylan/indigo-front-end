@@ -15,12 +15,13 @@ import ExploreChannels  from './pages/ExploreChannels';
 import ExploreCreators  from './pages/ExploreCreators';
 import NotSignedIn from './pages/NotSignedin';
 import { GetUserById } from "./services/UserServices";
+import { UserContext } from './contexts/userContext';
 
 
 
 function App() {
 
-  const UserContext = createContext()
+  // const UserContext = createContext()
 
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)

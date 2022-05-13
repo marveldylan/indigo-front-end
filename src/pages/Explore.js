@@ -19,8 +19,6 @@ const Explore = () => {
     useEffect(() => {
         const handleItems = async () => {
             const data = await GetAllCategories()
-            console.log('Explore useEffect fired')
-            console.log(data.categories, 'categories')
             setTrending(data.categories.sort((a, b) => a.views - b.views).slice(0, 5))
             if (sortBy === 'AZ') {
                 // Alphabetical sort direction taken from Stack Overflow: https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript

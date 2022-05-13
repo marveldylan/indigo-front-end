@@ -1,19 +1,28 @@
 import ExploreNav from "../components/ExploreNav";
 import Groups from "../components/Groups";
 import Channels from "../components/Channels";
-import { useEffect, useState } from "react";
+import Follow from "../components/Follow";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { GetCategoryById } from "../services/CategoryServices";
+import { FollowUnfollowCategory } from "../services/CategoryServices";
+import { UnfollowCategoryUser } from "../services/UserServices";
+import { FollowCategoryUser } from "../services/UserServices";
+import { UserContext } from "../contexts/userContext";   
+
 
 
 const CategoryDetails = () => {
 
     let { id } =useParams()
 
+    const user = useContext(UserContext)
+
     const [category, setCategory] = useState({})
     const [redScore, setRed] = useState(null)
     const [blueScore, setBlue] = useState(null)
     const [indigio, setIndigo] = useState(null)
+
 
     useEffect(()=>{
         const handleCategory = async () => {
@@ -22,8 +31,8 @@ const CategoryDetails = () => {
             setRed(data.category.red_score)
             setBlue(data.category.blue_score)
             setIndigo(data.category.indigo)
-            console.log(data.category)
         }
+        
         handleCategory()
     }, [redScore, blueScore])
 
@@ -33,8 +42,13 @@ const CategoryDetails = () => {
             <div className="Category-header">
                 <img className="Category-header-image" src={category.cover_image} />
                 <h3>{category.name}</h3>
-                <h4>Followers: {category.follower_counter}</h4>
-                <h4>Channels: {category.channel_counter}</h4>
+                <Follow 
+                    item={category} 
+                    user={user} 
+                    userAttribute={user.subscribed_categories} 
+                    updateFunction={FollowUnfollowCategory} 
+                    followUserFunction ={FollowCategoryUser} 
+                    unfollowUserFunction ={UnfollowCategoryUser}/>
             </div>
             <div className="Group-container">
                 <h3>Groups</h3>
