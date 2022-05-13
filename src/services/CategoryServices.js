@@ -20,8 +20,9 @@ export const GetCategoryById = async (id) => {
 
 export const FollowUnfollowCategory = async (id, followCount) => {
     try {
-        const res = await Client.put(`/categories/${id}`,{ follower_counter: followCount} )
-        return res.data
+            const res = await Client.put(`/categories/${id}`,{ follower_counter: followCount})
+            return res.data
+
     } catch (error) {
         throw error
     }

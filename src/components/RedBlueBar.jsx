@@ -1,9 +1,31 @@
 import React from "react";
+import { useEffect, useState } from "react";
 
-const RedBlueBar = (props) => {
+const RedBlueBar = ({ redScore, blueScore, indigo }) => {
+
+    const [redWidth, setRedWidth] = useState(null)
+
+    useEffect(()=> {
+        const buildBar = async () => {
+            setRedWidth((indigo))
+            console.log(redWidth, 'bar width')
+            console.log(indigo, 'indigo')
+        }
+        buildBar()
+    }, [redWidth, indigo])
+
     return (
-        <div>
-            <div>{`${completed}%`}</div>
+        <div className="Red-blue-container">
+            <div className="Blue-bar" style={{ width: "100%" }}>
+                {blueScore}
+                <div className="Red-bar" style={{ width: `${redWidth*100}%`}}>
+                    <h4>{redScore}</h4>
+                </div>
+            </div>
+            <div className="Indigo-container">
+                <h3>Indigo: {indigo}</h3>
+            </div>
+
         </div>
     )
 }

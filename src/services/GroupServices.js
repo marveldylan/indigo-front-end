@@ -26,3 +26,13 @@ export const GetGroupById = async (id) => {
         throw error
     }
 }
+
+export const FollowUnfollowGroup = async (id, followCount) => {
+    try {
+            const res = await Client.put(`/groups/${id}`,{ follower_counter: followCount})
+            return res.data
+
+    } catch (error) {
+        throw error
+    }
+}

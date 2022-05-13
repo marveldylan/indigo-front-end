@@ -18,6 +18,15 @@ export const GetChannelsByCategory = async (id) => {
     }
 }
 
+export const GetChannelsByGroup = async (id) => {
+    try {
+        const res = await Client.get(`/channels/group/${id}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
 export const GetChannelById = async (id) => {
     try {
         const res = await Client.get(`/channels/${id}`)

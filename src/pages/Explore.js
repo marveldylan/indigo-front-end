@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect,useContext } from "react";
 import { GetAllCategories } from "../services/CategoryServices";
 import ExploreNav from "../components/ExploreNav";
 import ItemMap from "../components/ItemMap";
 
 const Explore = () => {
 
-    let navigate = useNavigate()
 
     const [items, setItems] = useState([])
     const [sortBy, setSort] = useState('AZ')

@@ -1,51 +1,59 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../contexts/userContext";
+import { GetUserById } from "../services/UserServices";
 
-const Follow = ({ item, user, userAttribute, updateFunction, followUserFunction, unfollowUserFunction }) => {
+const Follow = ({ item, followers, user, userAttribute, updateFunction, followUserFunction, unfollowUserFunction }) => {
     
 
     let { id }   = useParams()
 
+    const [, setCurrentUser] = useContext(UserContext)
+
     const [following, setFollowing] = useState(false)
-    const [followCount, setFollowCount] = useState(item.follower_counter)
-    const [userArray, setUserArray] = useState(userAttribute)
+    const [followCount, setFollowCount] = useState()
+    const [userArray,] = useState(userAttribute)
+
+    const handleUser = async (id) => {
+        const data = await GetUserById(id)
+        setCurrentUser(data.user)
+        console.log(user)
+    }
 
     const handleClick = () => {
-        console.log(id, 'id')
         if(following) {
             // unfollow
+            let newFollowCount = parseInt(parseInt(followers) - 1)
             setFollowing(false)
-            setFollowCount(followCount - 1)
+            console.log(newFollowCount, 'newfollowcount')
+            setFollowCount(newFollowCount)
             for(let i = 0 ; i < userArray.length; i++) {
                 if(userArray[i] === id.toString()) {
-                    console.log(unfollowUserFunction, 'unfollow user function')
                     unfollowUserFunction(user._id, id)
-
                 }
             }
         } else {
             // follow
+            let newFollowCount = parseInt(parseInt(followers) + 1)
             setFollowing(true)
-            setFollowCount(followCount + 1)
-            console.log(user._id, 'userid')
-            console.log(followUserFunction, 'follow user function')
+            setFollowCount(newFollowCount)
             followUserFunction(user._id, id)
         }
+        console.log(updateFunction)
         updateFunction(id, followCount)
+        // call user
+        handleUser(user._id)
+
 
     }
 
     useEffect(()=> {
         const checkFollowStatus = () => {
             userAttribute.forEach((item)=>{
-                if(item === id) {
+                if(item === id.toString()) {
                     setFollowing(true)
                 }
             })
-            console.log(following, 'follow status')
-            console.log(user, 'user')
-            console.log(userAttribute)
-            console.log(id)
 
         }
         checkFollowStatus()
@@ -59,6 +67,9 @@ const Follow = ({ item, user, userAttribute, updateFunction, followUserFunction,
                     <button onClick={()=>handleClick()}>Unfollow</button>
                 :   <button onClick={()=>handleClick()}>Follow</button>
             }
+            <div className="Follow-count-container">
+                <h4>Followers: {followers}</h4>
+            </div>
 
             
         </div>

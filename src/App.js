@@ -11,6 +11,7 @@ import MyLibrary from './pages/MyLibrary';
 import MyAccount from './pages/MyAccount';
 import ExploreGroups  from './pages/ExploreGroups';
 import CategoryDetails from './pages/CategoryDetails';
+import GroupDetails from './pages/GroupDetails';
 import ExploreChannels  from './pages/ExploreChannels';
 import ExploreCreators  from './pages/ExploreCreators';
 import NotSignedIn from './pages/NotSignedin';
@@ -20,8 +21,6 @@ import { UserContext } from './contexts/userContext';
 
 
 function App() {
-
-  // const UserContext = createContext()
 
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
@@ -55,7 +54,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log('App.js useEffect1 fired')
     const token = localStorage.getItem('token')
 
     if (token) {
@@ -64,7 +62,7 @@ function App() {
   }, [])
 
   useEffect(()=> {
-    console.log('App.js useEffect 2 fired')
+    console.log('App.js useEffect setCurrenUser fired')
     const handleUser = async (id) => {
         const data = await GetUserById(id)
         setCurrentUser(data.user)
@@ -79,7 +77,7 @@ function App() {
   return (
     <div className="App">
         { user ?
-          <UserContext.Provider value={currentUser}>
+          <UserContext.Provider value={[currentUser, setCurrentUser]}>
           <div className={homeState}>
             <div className="Margin"></div>
             <div className="Nav-wrapper">
@@ -122,8 +120,15 @@ function App() {
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
+                            <Route path = "/explore/groups/:id" element={<GroupDetails
+                  user={user}
+                  setUser={setCurrentUser}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
                 <Route path = "/explore/categories/:id" element={<CategoryDetails
                   user={user}
+                  setUser={setCurrentUser}
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />

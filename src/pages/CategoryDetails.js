@@ -4,11 +4,14 @@ import Channels from "../components/Channels";
 import Follow from "../components/Follow";
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { GetGroupsByCategory } from "../services/GroupServices";
+import { GetChannelsByCategory } from "../services/ChannelServices";
 import { GetCategoryById } from "../services/CategoryServices";
 import { FollowUnfollowCategory } from "../services/CategoryServices";
 import { UnfollowCategoryUser } from "../services/UserServices";
 import { FollowCategoryUser } from "../services/UserServices";
-import { UserContext } from "../contexts/userContext";   
+import { UserContext } from "../contexts/userContext";  
+
 
 
 
@@ -16,25 +19,21 @@ const CategoryDetails = () => {
 
     let { id } =useParams()
 
-    const user = useContext(UserContext)
+    const [user, setUser] = useContext(UserContext)
 
     const [category, setCategory] = useState({})
-    const [redScore, setRed] = useState(null)
-    const [blueScore, setBlue] = useState(null)
-    const [indigio, setIndigo] = useState(null)
+
 
 
     useEffect(()=>{
+        console.log(user, 'user')
         const handleCategory = async () => {
             const data = await GetCategoryById (id)
             setCategory(data.category)
-            setRed(data.category.red_score)
-            setBlue(data.category.blue_score)
-            setIndigo(data.category.indigo)
         }
         
         handleCategory()
-    }, [redScore, blueScore])
+    }, [user.subscribed_categories])
 
     return (
         <div className="Category-details">
@@ -43,20 +42,22 @@ const CategoryDetails = () => {
                 <img className="Category-header-image" src={category.cover_image} />
                 <h3>{category.name}</h3>
                 <Follow 
-                    item={category} 
+                    item={category}
+                    followers={category.follower_counter}
                     user={user} 
                     userAttribute={user.subscribed_categories} 
                     updateFunction={FollowUnfollowCategory} 
                     followUserFunction ={FollowCategoryUser} 
-                    unfollowUserFunction ={UnfollowCategoryUser}/>
+                    unfollowUserFunction ={UnfollowCategoryUser}
+                />
             </div>
             <div className="Group-container">
                 <h3>Groups</h3>
-                <Groups categoryId = {id}/>
+                <Groups id = {id} getGroups={GetGroupsByCategory} />
             </div>
             <div className="Channel-container">
                 <h3>Channels</h3>
-                <Channels categoryId = {id}/>
+                <Channels id = {id} getChannels={GetChannelsByCategory} />
             </div>
         </div>
     )

@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import { GetChannelsByCategory } from "../services/ChannelServices";
 import ItemMap from "./ItemMap";
 
 
-const Channels = (props) => {
+const Channels = ({id, getChannels}) => {
 
     const [channels, setChannels] = useState([])
 
     useEffect(()=> {
         const handleChannels = async () => {
-            const data = await GetChannelsByCategory(props.categoryId)
+            const data = await getChannels(id)
             setChannels(data.channels)
         }
         handleChannels()

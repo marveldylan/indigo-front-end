@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react"
-import { GetGroupsByCategory } from "../services/GroupServices";
 import ItemMap from "./ItemMap";
 
 
-const Groups = (props) => {
+const Groups = ({ id, getGroups }) => {
 
     const [groups, setGroups] = useState([])
 
     useEffect(()=> {
         const handleGroups = async () => {
-            const data = await GetGroupsByCategory(props.categoryId)
+            const data = await getGroups(id)
             setGroups(data.groups)
         }
         handleGroups()

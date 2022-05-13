@@ -261,6 +261,19 @@
     margin-top: -10%;
 }
 
+.Blue-bar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    height: 50px;
+    background-color: blue;
+}
+
+.Red-bar {
+    height: 50px;
+    background-color: red;
+}
+
 .Account-cover-image {
     width: 100%;
     height: 300px;
