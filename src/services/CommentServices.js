@@ -8,3 +8,12 @@ export const GetCommentById = async (id) => {
         throw error
     }
 }
+
+export const GetCommentByUser = async (id) => {
+    try {
+        const res = await Client.get(`/comments/user/${id}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}

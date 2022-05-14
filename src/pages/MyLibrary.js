@@ -1,11 +1,12 @@
 import ItemMap from "../components/ItemMap";
+import PostMap from "../components/PostMap";
 import UserNav from "../components/UserNav";
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../contexts/userContext";
-import { GetGroupById } from "../services/GroupServices";
-import { GetChannelById } from "../services/ChannelServices";
-import { GetPostById } from "../services/PostServices";
-import { GetCommentById } from "../services/CommentServices";
+import { GetGroupById, GetGroupsByUser } from "../services/GroupServices";
+import { GetChannelById, GetChannelsByUser } from "../services/ChannelServices";
+import { GetPostById, GetPostsByUser } from "../services/PostServices";
+import { GetCommentByUser } from "../services/CommentServices";
 
 const MyLibrary = () => {
 
@@ -18,6 +19,21 @@ const MyLibrary = () => {
     const [savedPosts, setSavedPosts] = useState([])
     const [userPosts, setUserPosts]  = useState([])
     const [comments, setUserComments] = useState([])
+    const [showSavedPosts, setShowSavedPosts] = useState(false)
+    const [showMyPosts, setShowMyPosts] = useState(false)
+    const [showComments, setShowComments] = useState(false)
+
+    const handleSavedPostsClick = () => {
+        showSavedPosts ? setShowSavedPosts(false) : setShowSavedPosts(true)
+    }
+
+    const handleMyPostsClick = () => {
+        showMyPosts ? setShowMyPosts(false) : setShowMyPosts(true)
+    }
+
+    const handleCommentsClick = () => {
+        showComments ? setShowComments(false) : setShowComments(true)
+    }
 
     useEffect(()=> {
         const handleSubGroups = async () => {
@@ -38,20 +54,12 @@ const MyLibrary = () => {
             setSubbedChannels(channelArray)
         }
         const handleUserGroups = async () => {
-            let groupArray = []
-            await user.user_groups.forEach(async (groupId)=> {
-                let group = await GetGroupById(groupId)
-                groupArray.push(group.group)
-            })
-            setUserGroups(groupArray)
+            const data = await GetGroupsByUser(user._id)
+            setUserGroups(data.groups)
         }
         const handleUserChannels = async () => {
-            let channelArray = []
-            await user.user_channels.forEach(async (channelId)=> {
-                let channel = await GetChannelById(channelId)
-                channelArray.push(channel.channel)
-            })
-            setUserChannels(channelArray)
+            const data = await GetChannelsByUser(user._id)
+            setUserChannels(data.channels)
         }
         const handleSavedPosts = async () => {
             let postArray = []
@@ -62,20 +70,12 @@ const MyLibrary = () => {
             setSavedPosts(postArray)
         }
         const handleUserPosts = async () => {
-            let postArray = []
-            await user.user_posts.forEach(async (postId)=> {
-                let post = await GetPostById(postId)
-                postArray.push(post.post)
-            })
-            setUserPosts(postArray)
+            const data = await GetPostsByUser(user._id)
+            setUserPosts(data.posts)
         }
         const handleUserComments = async () => {
-            let commentArray = []
-            await user.user_comments.forEach(async (commentId)=> {
-                let comment = await GetCommentById(commentId)
-                commentArray.push(comment.comment)
-            })
-            setUserComments(commentArray)
+            const data = await GetCommentByUser(user._id)
+            setUserComments(data.comments)
         }
         handleSubGroups()
         handleSubChannels()
@@ -99,12 +99,25 @@ const MyLibrary = () => {
                     <ItemMap items={userGroups} basePath='/my/groups/' /> 
                 <h4>My Channels</h4>
                     <ItemMap items={userChannels} basePath='/my/channels/' />
-                <h4>Saved Posts</h4>
+                <h4 onClick={()=>handleSavedPostsClick()}>Saved Posts</h4>
+                    {
+                        showSavedPosts ?
+                        <PostMap items={savedPosts} />
+                        : ''
+                    }
+                <h4 className="My-Posts-header" onClick={()=>handleMyPostsClick()}>My Posts</h4>
+                    {
+                        showMyPosts ?
+                        <PostMap items={userPosts}/>
+                        : ''
+                    }
 
-                <h4>My Posts</h4>
-                    {/* map posts */}
-                <h4>My Comments</h4>
-                {/* map posts */}
+                <h4 onClick={()=>handleCommentsClick()}>My Comments</h4>
+                {
+                    showComments ?
+                    <PostMap items={comments} />
+                    : ''
+                }
             </div>
         </div>
     )

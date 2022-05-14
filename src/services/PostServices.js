@@ -10,6 +10,15 @@ export const GetPostsByChannel = async (id) => {
     }
 }
 
+export const GetPostsByUser = async (id) => {
+    try {
+        const res = await Client.get(`/posts/user/${id}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
 export const GetPostById = async (id) => {
     try {
         const res = await Client.get(`/posts/${id}`)

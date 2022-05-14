@@ -30,6 +30,15 @@ export const GetGroupsByCategory = async (id) => {
     }
 }
 
+export const GetGroupsByUser = async (id) => {
+    try {
+        const res = await Client.get(`/groups/user/${id}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
 export const GetGroupById = async (id) => {
     try {
         const res = await Client.get(`/groups/${id}`)
