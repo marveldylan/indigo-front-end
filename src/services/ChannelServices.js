@@ -1,5 +1,17 @@
 import Client from './api';
 
+export const CreateChannel = async (userId, groupId, categoryId, channelName, channelImage) => {
+    try {
+        const res = await Client.post(`/channels/${groupId}/${userId}`, {
+            category_id: categoryId,
+            name: channelName,
+            cover_image: channelImage
+        })
+    } catch (error) {
+        throw error
+    }
+}
+
 export const GetAllChannels = async () => {
     try {
         const res = await Client.get('/channels/')

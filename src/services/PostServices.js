@@ -9,3 +9,12 @@ export const GetPostsByChannel = async (id) => {
         throw error
     }
 }
+
+export const GetPostById = async (id) => {
+    try {
+        const res = await Client.get(`/posts/${id}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}

@@ -21,7 +21,7 @@ const ChannelDetails = ({ channel }) => {
         <div className="Channel-details-container">
                 <img className="Channel-header-image" src={channel.cover_image} />
                 <h3>{channel.name}</h3>
-                <Follow 
+                {/* <Follow 
                     item={channel}
                     followers={channel.follower_counter}
                     user={user} 
@@ -29,7 +29,7 @@ const ChannelDetails = ({ channel }) => {
                     updateFunction={FollowUnfollowChannel} 
                     followUserFunction ={FollowChannelUser} 
                     unfollowUserFunction ={UnfollowChannelUser}
-                />
+                /> */}
                 <RedBlueBar redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} />
                 <button onClick={()=>handleClick()}>Go To Channel</button>
         </div>

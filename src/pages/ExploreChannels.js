@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { GetAllChannels } from "../services/ChannelServices";
 import ExploreNav from "../components/ExploreNav";
 import { BsChevronDoubleDown } from 'react-icons/bs';
 import ChannelDetails from '../components/ChannelDetails'
 
-const ExploreChannels = (props) => {
-    let navigate = useNavigate()
+const ExploreChannels = () => {
 
     const [items, setItems] = useState([])
     const [sortBy, setSort] = useState('')

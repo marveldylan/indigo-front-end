@@ -18,24 +18,23 @@ export const GetAllCreators = async () => {
     }
 }
 
-export const FollowCategoryUser = async (userId, categoryId) => {
-    try {
-        const res = await Client.put(`/users/${userId}/follow/category/${categoryId}`)
-        return res.data
-    } catch (error) {
-        throw error
-    }
-}
+// export const FollowCategoryUser = async (userId, categoryId) => {
+//     try {
+//         const res = await Client.put(`/users/${userId}/follow/category/${categoryId}`)
+//         return res.data
+//     } catch (error) {
+//         throw error
+//     }
+// }
 
-
-export const UnfollowCategoryUser = async (userId, categoryId) => {
-    try {
-        const res = await Client.put(`/users/${userId}/unfollow/category/${categoryId}`)
-        return res.data
-    } catch (error) {
-        throw error
-    }
-}
+// export const UnfollowCategoryUser = async (userId, categoryId) => {
+//     try {
+//         const res = await Client.put(`/users/${userId}/unfollow/category/${categoryId}`)
+//         return res.data
+//     } catch (error) {
+//         throw error
+//     }
+// }
 
 export const DisbandGroupUser = async (userId, groupId) => {
     try {

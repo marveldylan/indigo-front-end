@@ -1,5 +1,17 @@
 import Client from './api'
 
+export const CreateGroup = async (userId, categoryId, groupName, groupImage) => {
+    try {
+        const res = await Client.post(`/groups/${userId}`, {
+            category_id: categoryId,
+            name: groupName,
+            cover_image: groupImage
+        })
+    } catch (error) {
+        throw error
+    }
+}
+
 export const GetAllGroups = async () => {
     try {
         const res = await Client.get('/groups/')

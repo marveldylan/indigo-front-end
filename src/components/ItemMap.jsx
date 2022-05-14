@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const ItemMap = ({ items, basePath }) => {
 
@@ -8,6 +9,10 @@ const ItemMap = ({ items, basePath }) => {
     const handleClick = (id) => {
         navigate(`${basePath}${id}`)
     }
+
+    useEffect(()=> {
+
+    }, [items])
 
         return (
             <div className="Item-grid">

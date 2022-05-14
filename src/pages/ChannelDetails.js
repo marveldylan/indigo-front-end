@@ -32,7 +32,7 @@ const ChannelDetails = () => {
         }
         
         handleChannel()
-    }, [user.subscribed_channels])
+    }, [])
 
     return (
         <div className="Channel-details">

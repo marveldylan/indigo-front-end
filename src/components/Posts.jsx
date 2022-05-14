@@ -12,7 +12,7 @@ const Posts = ({ id, getPosts }) => {
             setPosts(data.posts)
         }
         handlePosts()
-    })
+    }, [])
 
     return (
         <div>
