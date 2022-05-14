@@ -92,13 +92,13 @@ const MyLibrary = () => {
             <div className="Library-container">
                 <h1>My Library</h1>
                 <h4>Subscribed Groups</h4>
-                    <ItemMap items={subbedGroups} basePath='/explore/groups/' />
+                    <ItemMap items={subbedGroups} basePath='/groups/' />
                 <h4>Subscribed Channels</h4>
-                    <ItemMap items={subbedChannels} basePath='/explore/channels/' />    
+                    <ItemMap items={subbedChannels} basePath='/channels/' />    
                 <h4>My Groups</h4>
-                    <ItemMap items={userGroups} basePath='/my/groups/' /> 
+                    <ItemMap items={userGroups} basePath='/groups/' /> 
                 <h4>My Channels</h4>
-                    <ItemMap items={userChannels} basePath='/my/channels/' />
+                    <ItemMap items={userChannels} basePath='/channels/' />
                 <h4 onClick={()=>handleSavedPostsClick()}>Saved Posts</h4>
                     {
                         showSavedPosts ?

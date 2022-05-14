@@ -120,13 +120,13 @@ function App() {
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
-                            <Route path = "/explore/groups/:id" element={<GroupDetails
+                            <Route path = "/groups/:id" element={<GroupDetails
                   user={user}
                   setUser={setCurrentUser}
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
-                <Route path = "/explore/categories/:id" element={<CategoryDetails
+                <Route path = "/categories/:id" element={<CategoryDetails
                   user={user}
                   setUser={setCurrentUser}
                   authenticated={authenticated}
@@ -137,7 +137,7 @@ function App() {
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
-                <Route path = "/explore/channels/:id" element={<ChannelDetails
+                <Route path = "/channels/:id" element={<ChannelDetails
                   user={user}
                   setUser={setCurrentUser}
                   authenticated={authenticated}
@@ -163,10 +163,12 @@ function App() {
             <Route path = "/search" element={<NotSignedIn />} />
             <Route path = "/library" element={<NotSignedIn />} />
             <Route path = "/explore" element={<NotSignedIn />} />
+            <Route path = "/explore/categories" element={<NotSignedIn />} />
+            <Route path = "/categories" element={<NotSignedIn />} />
             <Route path = "/explore/groups" element={<NotSignedIn />} />
-            <Route path = "/explore/groups/:id" element={<NotSignedIn />} />
+            <Route path = "/groups/:id" element={<NotSignedIn />} />
             <Route path = "/explore/channels" element={<NotSignedIn />} />
-            <Route path = "/explore/channels/:id" element={<NotSignedIn />} />
+            <Route path = "/channels/:id" element={<NotSignedIn />} />
             <Route path = "/account" element={<NotSignedIn />} />
             </Routes>
         }

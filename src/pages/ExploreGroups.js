@@ -48,7 +48,7 @@ const ExploreGroups = () => {
                         </select>
                     </div>
                 </div>
-                <ItemMap items={items} basePath='/explore/groups/' />
+                <ItemMap items={items} basePath='/groups/' />
             </div>
         </div>
     )

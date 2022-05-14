@@ -14,7 +14,7 @@ const ChannelDetails = ({ channel }) => {
     const [user, setUser] = useContext(UserContext)
 
     const handleClick = () => {
-        navigate(`/explore/channels/${channel._id}`)
+        navigate(`/channels/${channel._id}`)
     }
 
     return (

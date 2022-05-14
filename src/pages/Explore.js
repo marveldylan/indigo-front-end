@@ -36,7 +36,7 @@ const Explore = () => {
                 <div className="Item-header-container">
                     <h4>Trending</h4>
                 </div>
-                <ItemMap items={trending} basePath='/explore/categories/' />
+                <ItemMap items={trending} basePath='/categories/' />
                 <div className='Item-container-expanded'>
                     <div className="Item-header-container">
                         <h4>Explore Categories</h4>
@@ -50,7 +50,7 @@ const Explore = () => {
                         </select>
                     </div>
                 </div>
-                <ItemMap items={items} basePath='/explore/categories/' />
+                <ItemMap items={items} basePath='/categories/' />
             </div>
         </div>
     )
