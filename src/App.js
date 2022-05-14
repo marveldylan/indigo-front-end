@@ -12,8 +12,8 @@ import MyAccount from './pages/MyAccount';
 import ExploreGroups  from './pages/ExploreGroups';
 import CategoryDetails from './pages/CategoryDetails';
 import GroupDetails from './pages/GroupDetails';
+import ChannelDetails from './pages/ChannelDetails';
 import ExploreChannels  from './pages/ExploreChannels';
-import ExploreCreators  from './pages/ExploreCreators';
 import NotSignedIn from './pages/NotSignedin';
 import { GetUserById } from "./services/UserServices";
 import { UserContext } from './contexts/userContext';
@@ -137,8 +137,9 @@ function App() {
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
-                <Route path = "/explore/creators" element={<ExploreCreators
+                <Route path = "/explore/channels/:id" element={<ChannelDetails
                   user={user}
+                  setUser={setCurrentUser}
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
@@ -166,8 +167,6 @@ function App() {
             <Route path = "/explore/groups/:id" element={<NotSignedIn />} />
             <Route path = "/explore/channels" element={<NotSignedIn />} />
             <Route path = "/explore/channels/:id" element={<NotSignedIn />} />
-            <Route path = "/explore/creators" element={<NotSignedIn />} />
-            <Route path = "/explore/creators/:id" element={<NotSignedIn />} />
             <Route path = "/account" element={<NotSignedIn />} />
             </Routes>
         }

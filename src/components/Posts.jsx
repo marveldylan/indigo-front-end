@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import PostMap from "./PostMap";
 
 
-const Posts = (props) => {
+const Posts = ({ id, getPosts }) => {
 
     const [posts, setPosts] = useState([])
 
     useEffect(()=> {
-        const handlePosts = () => {
-
+        const handlePosts = async () => {
+            const data = await getPosts(id)
+            setPosts(data.posts)
         }
+        handlePosts()
     })
 
     return (
         <div>
-
+            <PostMap items={posts} />
         </div>
     )
 }

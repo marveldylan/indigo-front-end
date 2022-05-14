@@ -7,7 +7,6 @@ const ExploreNav = () => {
             <Link className="Explore-link" to="/explore/">Categories</Link>
             <Link className="Explore-link" to="/explore/groups">Groups</Link>
             <Link className="Explore-link" to="/explore/channels">Channels</Link>
-            <Link className="Explore-link" to="/explore/creators">Creators</Link>
         </header>
     )
 }

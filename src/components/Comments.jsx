@@ -1,21 +1,10 @@
-import { useEffect, useState } from "react"
 
 
-const Channels = (props) => {
+const Comments = () => {
 
-    const [channels, setChannels] = useState([])
-
-    useEffect(()=> {
-        const handleChannels = () => {
-
-        }
-    })
-
-    return (
-        <div>
-
-        </div>
-    )
+        return (
+            <h3>Comments</h3>
+        )
 }
 
-export default Channels
+export default Comments

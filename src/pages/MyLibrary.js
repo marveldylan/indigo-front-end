@@ -1,6 +1,10 @@
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 
 
-const MyLibrary = (props) => {
+const MyLibrary = () => {
+
+    const [user, setUser] = useContext(UserContext)
 
     return (
         <div className="Main-container">

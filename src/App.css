@@ -274,6 +274,17 @@
     background-color: red;
 }
 
+.Post-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Post-card {
+    width: 80%;
+
+}
+
 .Account-cover-image {
     width: 100%;
     height: 300px;

@@ -35,3 +35,13 @@ export const GetChannelById = async (id) => {
         throw error
     }
 }
+
+export const FollowUnfollowChannel= async (id, followCount) => {
+    try {
+            const res = await Client.put(`/channels/${id}`,{ follower_counter: followCount})
+            return res.data
+
+    } catch (error) {
+        throw error
+    }
+}
