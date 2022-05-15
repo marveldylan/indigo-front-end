@@ -119,13 +119,6 @@ const MyLibrary = () => {
                         <PostMap items={userPosts} user={user} setUpdate={setUpdate} update={update}/>
                         : ''
                     }
-
-                <h4 onClick={()=>handleCommentsClick()}>My Comments</h4>
-                {
-                    showComments ?
-                    <PostMap items={comments} user={user} setUpdate={setUpdate} update={update}/>
-                    : ''
-                }
             </div>
         </div>
     )

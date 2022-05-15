@@ -11,24 +11,39 @@ import { UnfollowChannelUser } from "../services/UserServices";
 import { FollowChannelUser } from "../services/UserServices";
 import { GetPostsByChannel } from "../services/PostServices";
 import { UserContext } from "../contexts/userContext";
+import { useNavigate } from "react-router-dom";
+import { DeleteChannel } from "../services/ChannelServices";
 
 
 
 
 const ChannelDetails = () => {
 
+    let navigate = useNavigate()
+    const userNavigate = () => {
+        navigate(`/users/${channel.user_id._id}`)
+    }
+
     let { id } =useParams()
 
     const [user, setUser] = useContext(UserContext)
+    
 
     const [channel, setChannel] = useState({})
     const [username, setUsername] = useState('')
     const [userId, setUserId] = useState('')
     const [showCreatePost, setShowCreatePost] = useState(false)
+    const [refresh, setRefresh] = useState(false)
+
+    const channelDisband = async () => {
+        await DeleteChannel(channel._id)
+        navigate('/library')
+    }
 
     const showCreate = () => {
         showCreatePost ? setShowCreatePost(false) : setShowCreatePost(true)
     }
+
 
 
     useEffect(()=>{
@@ -41,7 +56,7 @@ const ChannelDetails = () => {
         }
         
         handleChannel()
-    }, [])
+    }, [refresh])
 
     return (
         <div className="Channel-details">
@@ -50,7 +65,12 @@ const ChannelDetails = () => {
                 <img className="Channel-header-image" src={channel.cover_image} />
                 <RedBlueBar redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} />
                 <h3>{channel.name}</h3>
-                <h6>Created By: {username}</h6>
+                <h6 className="Username" onClick={()=>userNavigate()}>Created By: {username}</h6>
+                {
+                    (userId === user._id) ?
+                    <button onClick={()=>channelDisband()}>Disband Channel</button>
+                    : ''
+                }
                 <Follow 
                     item={channel}
                     followers={channel.follower_counter}
@@ -72,7 +92,7 @@ const ChannelDetails = () => {
                 }
                 {
                     showCreatePost ?
-                    <CreatePost channel={channel} user={user} setShowCreatePost={setShowCreatePost}/>
+                    <CreatePost channel={channel} user={user} setShowCreatePost={setShowCreatePost} refresh={refresh} setRefresh={setRefresh}/>
                     : ''
                 }
                 <Posts id = {id} getPosts={GetPostsByChannel} user={user}/>

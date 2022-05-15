@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { CreateNewPost } from "../services/PostServices"
 
-const CreatePost = ({channel, user, setShowCreatePost}) => {
+const CreatePost = ({channel, user, setShowCreatePost, refresh, setRefresh}) => {
 
     const [ formValues, setFormValues ] = useState({
         title: channel.title,
@@ -27,6 +27,7 @@ const CreatePost = ({channel, user, setShowCreatePost}) => {
         )
         setFormValues({...formValues, title: '', content: '', image: '', video: ''})
         setShowCreatePost(false)
+        refresh ? setRefresh(false) : setRefresh(true)
     }
 
     return (

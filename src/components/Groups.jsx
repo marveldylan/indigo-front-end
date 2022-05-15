@@ -15,7 +15,7 @@ const Groups = ({ id, getGroups }) => {
     }, [])
 
     return (
-        <ItemMap items={groups} basePath='/explore/groups/' />
+        <ItemMap items={groups} basePath='/groups/' />
     )
 }
 

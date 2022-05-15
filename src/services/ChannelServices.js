@@ -1,6 +1,6 @@
 import Client from './api';
 
-export const CreateChannel = async (userId, groupId, categoryId, channelName, channelImage) => {
+export const CreateNewChannel = async (userId, groupId, categoryId, channelName, channelImage) => {
     try {
         const res = await Client.post(`/channels/${groupId}/${userId}`, {
             category_id: categoryId,
@@ -62,6 +62,15 @@ export const FollowUnfollowChannel= async (id, followCount) => {
             const res = await Client.put(`/channels/${id}`,{ follower_counter: followCount})
             return res.data
 
+    } catch (error) {
+        throw error
+    }
+}
+
+export const DeleteChannel = async (id) => {
+    try {
+        const res = await Client.delete(`/channels/${id}`)
+        return res.data
     } catch (error) {
         throw error
     }

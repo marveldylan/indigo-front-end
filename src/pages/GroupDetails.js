@@ -3,13 +3,14 @@ import Channels from "../components/Channels";
 import Follow from "../components/Follow";
 import RedBlueBar from "../components/RedBlueBar";
 import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GetGroupById } from "../services/GroupServices";
 import { FollowUnfollowGroup } from "../services/GroupServices";
 import { UnfollowGroupUser } from "../services/UserServices";
 import { FollowGroupUser } from "../services/UserServices";
 import { UserContext } from "../contexts/userContext"; 
 import { GetChannelsByGroup } from "../services/ChannelServices";
+import { DeleteGroup } from "../services/GroupServices";
 
 
 
@@ -17,13 +18,20 @@ import { GetChannelsByGroup } from "../services/ChannelServices";
 const GroupDetails = () => {
 
     let { id } =useParams()
+    let navigate = useNavigate()
+    const userNavigate = () => {
+        navigate(`/users/${group.user_id._id}`)
+    }
 
     const [user, setUser] = useContext(UserContext)
-
     const [group, setGroup] = useState({})
-
     const [username, setUsername] = useState('')
+    const [userId, setUserId] = useState('')
 
+    const groupDisband = async () => {
+        await DeleteGroup(group._id)
+        navigate('/library')
+    }
 
 
     useEffect(()=>{
@@ -32,6 +40,7 @@ const GroupDetails = () => {
             const data = await GetGroupById (id)
             setGroup(data.group)
             setUsername(data.group.user_id.username)
+            setUserId(data.group.user_id._id)
         }
         
         handleGroup()
@@ -44,7 +53,12 @@ const GroupDetails = () => {
                 <img className="Group-header-image" src={group.cover_image} />
                 <RedBlueBar redScore = {group.red_score} blueScore = {group.blue_score} indigo= {group.indigo} />
                 <h3>{group.name}</h3>
-                <h6>Created By: {username}</h6>
+                <h6 className="Username" onClick={()=>userNavigate()}>Created By: {username}</h6>
+                {
+                    (userId === user._id) ?
+                    <button onClick={()=>groupDisband()}>Disband Group</button>
+                    : ''
+                }
                 <Follow 
                     item={group}
                     followers={group.follower_counter}

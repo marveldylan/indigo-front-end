@@ -3,6 +3,7 @@ import EditPost from './EditPost'
 import Reply from "./Reply";
 import CommentMap from "./CommentMap";
 import { useNavigate } from "react-router-dom";
+import RedBlueBarSmall from "./RedBlueBarSmall";
 
 
 const Post = ({ item, user, setUpdate, update }) => {
@@ -62,6 +63,7 @@ const Post = ({ item, user, setUpdate, update }) => {
                         <h5 className="Post-title">{item.title}</h5>
                         <h6 className="Post-content">{item.content}</h6>   
                     </div>
+                    <RedBlueBarSmall redScore={item.red_score} blueScore={item.blue_score} indigo={item.indigo}/>
                     <div className="Post-actions-container">
                         <button onClick={()=>viewPostComments(item._id)}>View {item.comment_counter} Comments</button>
                         <button onClick={()=>replyPost(item._id)}>Reply</button>

@@ -13,6 +13,8 @@ import ExploreGroups  from './pages/ExploreGroups';
 import CategoryDetails from './pages/CategoryDetails';
 import GroupDetails from './pages/GroupDetails';
 import ChannelDetails from './pages/ChannelDetails';
+import CreateChannel from './pages/CreateChannel';
+import CreateGroup from './pages/CreateGroup';
 import ExploreChannels  from './pages/ExploreChannels';
 import EditProfile from './pages/EditProfile';
 import UserProfile from './pages/UserProfile';
@@ -117,6 +119,12 @@ function App() {
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
+                <Route path = "/create/group" element={<CreateGroup
+                  user={user}
+                  setUser={setCurrentUser}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
                 <Route path = "/explore/groups" element={<ExploreGroups
                   user={user}
                   authenticated={authenticated}
@@ -129,6 +137,12 @@ function App() {
                   handleLogout={handleLogout}
                 />} />
                 <Route path = "/categories/:id" element={<CategoryDetails
+                  user={user}
+                  setUser={setCurrentUser}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
+              <Route path = "/create/channel" element={<CreateChannel
                   user={user}
                   setUser={setCurrentUser}
                   authenticated={authenticated}
@@ -179,8 +193,10 @@ function App() {
             <Route path = "/explore" element={<NotSignedIn />} />
             <Route path = "/explore/categories" element={<NotSignedIn />} />
             <Route path = "/categories" element={<NotSignedIn />} />
+            <Route path = "/create/group" element={<NotSignedIn />} />
             <Route path = "/explore/groups" element={<NotSignedIn />} />
             <Route path = "/groups/:id" element={<NotSignedIn />} />
+            <Route path = "/create/channel" element={<NotSignedIn />} />
             <Route path = "/explore/channels" element={<NotSignedIn />} />
             <Route path = "/channels/:id" element={<NotSignedIn />} />
             <Route path = "/account" element={<NotSignedIn />} />

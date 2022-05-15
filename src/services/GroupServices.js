@@ -1,6 +1,6 @@
 import Client from './api'
 
-export const CreateGroup = async (userId, categoryId, groupName, groupImage) => {
+export const CreateNewGroup = async (userId, categoryId, groupName, groupImage) => {
     try {
         const res = await Client.post(`/groups/${userId}`, {
             category_id: categoryId,
@@ -53,6 +53,15 @@ export const FollowUnfollowGroup = async (id, followCount) => {
             const res = await Client.put(`/groups/${id}`,{ follower_counter: followCount})
             return res.data
 
+    } catch (error) {
+        throw error
+    }
+}
+
+export const DeleteGroup = async (id) => {
+    try {
+        const res = await Client.delete(`/groups/${id}`)
+        return res.data
     } catch (error) {
         throw error
     }
