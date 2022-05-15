@@ -1,14 +1,15 @@
 import Client from './api';
 
-export const CreateNewPost = async (channelId, userId, title, content, image, video, background) => {
+export const CreateNewPost = async (channelId, userId, title, contentType, content, image, video, background) => {
     try {
+        console.log(background, 'background')
         const res = await Client.post(`/posts/${channelId}/${userId}`, {
             title: title,
+            content_type: contentType,
             content: content,
             image: image,
             video: video,
             background: background
-
         })
         return res.data
     } catch (error) {
@@ -44,10 +45,11 @@ export const GetPostById = async (id) => {
     }
 }
 
-export const UpdatePost = async (id, postTitle, postContent, postImage, postVideo) => {
+export const UpdatePost = async (id, postTitle, postContentType, postContent, postImage, postVideo) => {
     try {
         const res = await Client.put(`/posts/${id}`, {
             title: postTitle,
+            content_type: postContentType,
             content: postContent,
             image: postImage,
             video: postVideo

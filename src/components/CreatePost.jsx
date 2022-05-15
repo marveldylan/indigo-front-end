@@ -6,6 +6,7 @@ const CreatePost = ({channel, user, setShowCreatePost, refresh, setRefresh}) => 
     const [ formValues, setFormValues ] = useState({
         title: channel.title,
         content: channel.content,
+        contentType: 'text',
         image: '',
         video: '',
         background: user.post_background
@@ -15,17 +16,28 @@ const CreatePost = ({channel, user, setShowCreatePost, refresh, setRefresh}) => 
         setFormValues({ ...formValues, [e.target.name]: e.target.value })
     }
 
+    const handleClick = (type) => {
+        if(type === 'text') {
+            setFormValues({...formValues, contentType: 'text', image: '', video: ''})
+        } else if (type === 'image') {
+            setFormValues({...formValues, contentType: 'image', content: '', video: ''})
+        } else if (type === 'video') {
+            setFormValues({...formValues, contentType: 'video', content: '', image: ''})
+        }
+    }
+
     const createPost = async () => {
         await CreateNewPost(
             channel._id,
             user._id,
             formValues.title,
+            formValues.contentType,
             formValues.content,
             formValues.image,
             formValues.video,
             formValues.background
         )
-        setFormValues({...formValues, title: '', content: '', image: '', video: ''})
+        setFormValues({...formValues, title: '', contentType: '', content: '', image: '', video: ''})
         setShowCreatePost(false)
         refresh ? setRefresh(false) : setRefresh(true)
     }
@@ -44,23 +56,57 @@ const CreatePost = ({channel, user, setShowCreatePost, refresh, setRefresh}) => 
                     onChange={handleChange}
                     required
                 />
-                <textarea
-                    className="Post-update-content"
-                    type="text"
-                    name="content"
-                    value={formValues.content}
-                    placeholder={channel.content}
-                    onChange={handleChange}
-                ></textarea>
-                <input
-                    classname="Post-update-attachment"
-                    type="text"
-                    name="attachment"
-                    value={formValues.attachment}
-                    placeholder={channel.attachment}
-                    onChange={handleChange}
-                    required
-                />
+                <div className="Post-content-type">
+                    <h6>Post Content Type</h6>
+                    <button onClick={()=>handleClick('text')}>Text</button>
+                    <button onClick={()=>handleClick('image')}>Image</button>
+                    <button onClick={()=>handleClick('video')}>Video</button>
+                </div>
+                {
+                    formValues.contentType === 'text' ?
+                        <div>
+                            <p>Content:</p>
+                            <textarea
+                                className="Post-update-content"
+                                type="text"
+                                name="content"
+                                value={formValues.content}
+                                placeholder={channel.content}
+                                onChange={handleChange}
+                            ></textarea>
+                        </div>
+                            : ''
+                }
+                {
+                    formValues.contentType === 'image' ?
+                        <div>
+                            <p>Image Link:</p>
+                            <input
+                                className="Post-update-image"
+                                type="text"
+                                name="image"
+                                value={formValues.image}
+                                placeholder={channel.image}
+                                onChange={handleChange}
+                            />
+                            </div>
+                            : ''
+                }
+                {
+                    formValues.contentType === 'video' ?
+                        <div>
+                            <p>Video Link:</p>
+                            <input
+                                className="Post-update-video"
+                                type="text"
+                                name="video"
+                                value={formValues.video}
+                                placeholder={channel.video}
+                                onChange={handleChange}
+                            />
+                        </div>
+                            : ''
+                }
             </div>
             <div className="Post-actions-container">
                 <button onClick={()=>createPost()}>Post</button>

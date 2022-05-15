@@ -18,6 +18,7 @@ const Post = ({ item, user, setUpdate, update }) => {
     const [reply, setReply] = useState(false)
     const [edit, setEdit] = useState(false)
     const [date, setDate] = useState('')
+    const [channel, setChannel] = useState('')
 
     const viewPostComments = (id) => {
         viewComments ? setViewComments(false) : setViewComments(true)
@@ -34,11 +35,12 @@ const Post = ({ item, user, setUpdate, update }) => {
 
 
     useEffect(()=>{
-        const convertDate = () => {
+        const convertDateSetName = () => {
             let formattedDate = new Date(item.updatedAt)
             setDate(`${(formattedDate.getMonth()+1).toString()}-${formattedDate.getDay()}-${formattedDate.getFullYear()} ${formattedDate.getUTCHours()}:${formattedDate.getUTCMinutes()}:${formattedDate.getUTCSeconds()} UTC`)
+            setChannel(item.channel_id.name)
         }
-        convertDate()
+        convertDateSetName()
     }, [edit])
 
 
@@ -60,6 +62,7 @@ const Post = ({ item, user, setUpdate, update }) => {
                         <img className="Post-profile-image" src={item.user_id.profile_image} />
                         <h6 className="Username" onClick={()=>userNavigate(item.user_id._id)}>{item.user_id.username}</h6>
                         <h6>{date}</h6>
+                        <h5>{channel}</h5>
                         <h5 className="Post-title">{item.title}</h5>
                         <h6 className="Post-content">{item.content}</h6>   
                     </div>
