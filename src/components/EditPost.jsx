@@ -22,7 +22,7 @@ const EditPost = ({ item, user, setEdit, setUpdate, update }) => {
     }
 
     const updatePost = async () => {
-        await UpdatePost(item._id, formValues.title, formValues.content, formValues.attachment)
+        await UpdatePost(item._id, formValues.title, formValues.content, formValues.image, formValues.video)
         setEdit(false)
         update ? setUpdate(false) : setUpdate(true)
     }
