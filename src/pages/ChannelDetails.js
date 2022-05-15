@@ -23,6 +23,12 @@ const ChannelDetails = () => {
 
     const [channel, setChannel] = useState({})
     const [username, setUsername] = useState('')
+    const [userId, setUserId] = useState('')
+    const [showCreatePost, setShowCreatePost] = useState(false)
+
+    const showCreate = () => {
+        showCreatePost ? setShowCreatePost(false) : setShowCreatePost(true)
+    }
 
 
     useEffect(()=>{
@@ -31,6 +37,7 @@ const ChannelDetails = () => {
             const data = await GetChannelById (id)
             setChannel(data.channel)
             setUsername(data.channel.user_id.username)
+            setUserId(data.channel.user_id._id)
         }
         
         handleChannel()
@@ -57,10 +64,15 @@ const ChannelDetails = () => {
             <div className="Post-container">
                 <h3>Posts</h3>
                 {
-                    channel.user_id._id === user._id ?
+                    userId === user._id ?
                     <div>
-                        <CreatePost channel={channel} user={user}/>
+                        <button onClick={()=>showCreate()}>New Post</button>
                     </div>
+                    : ''
+                }
+                {
+                    showCreatePost ?
+                    <CreatePost channel={channel} user={user} setShowCreatePost={setShowCreatePost}/>
                     : ''
                 }
                 <Posts id = {id} getPosts={GetPostsByChannel} user={user}/>

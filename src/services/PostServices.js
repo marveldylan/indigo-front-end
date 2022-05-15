@@ -1,5 +1,20 @@
 import Client from './api';
 
+export const CreateNewPost = async (channelId, userId, title, content, attachment, background) => {
+    try {
+        const res = await Client.post(`/posts/${channelId}/${userId}`, {
+            title: title,
+            content: content,
+            attachment: attachment,
+            background: background
+
+        })
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
 
 export const GetPostsByChannel = async (id) => {
     try {
