@@ -60,13 +60,15 @@ const ChannelDetails = () => {
     }, [refresh])
 
     return (
-        <div className="Channel-details">
+        <div className="Secondary-page-details">
             <ExploreNav />
-            <div className="Channel-header">
-                <img className="Channel-header-image" src={channel.cover_image} />
+            <div className="Secondary-page-header">
+                <img className="Secondary-page-header-image" src={channel.cover_image} />
                 <RedBlueBar id={channel._id} redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} updateFunction={UpdateIndigoChannel} />
+                <div className="Secondary-page-info">
+                    <div className="Secondary-page-about">
                 <h3>{channel.name}</h3>
-                <h6 className="Username" onClick={()=>userNavigate()}>Created By: {username}</h6>
+                <h6 className="Username" onClick={()=>userNavigate()}>Created By: <span className="Highlighted">{username}</span></h6>
                 {
                     (userId === user._id) ?
                     <button onClick={()=>channelDisband()}>Disband Channel</button>
@@ -81,6 +83,8 @@ const ChannelDetails = () => {
                     followUserFunction ={FollowChannelUser} 
                     unfollowUserFunction ={UnfollowChannelUser}
                 />
+            </div>
+            </div>
             </div>
             <div className="Post-container">
                 <h3>Posts</h3>

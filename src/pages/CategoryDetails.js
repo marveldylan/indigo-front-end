@@ -32,18 +32,18 @@ const CategoryDetails = () => {
     }, [user.subscribed_categories])
 
     return (
-        <div className="Category-details">
+        <div className="Page-details">
             <ExploreNav />
-            <div className="Category-header">
-                <img className="Category-header-image" src={category.cover_image} />
-                <h3>{category.name}</h3>
+            <div className="Page-header">
+                <img className="Page-header-image" src={category.cover_image} />
+                <h2 className="Page-title">{category.name}</h2>
             </div>
-            <div className="Group-container">
-                <h3>Groups</h3>
+            <div className="Map-container">
+                <h3 className="Map-title">Groups</h3>
                 <Groups id = {id} getGroups={GetGroupsByCategory} />
             </div>
-            <div className="Channel-container">
-                <h3>Channels</h3>
+            <div className="Map-container">
+                <h3 className="Map-title">Channels</h3>
                 <Channels id = {id} getChannels={GetChannelsByCategory} />
             </div>
         </div>

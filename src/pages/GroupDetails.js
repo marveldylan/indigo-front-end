@@ -48,30 +48,36 @@ const GroupDetails = () => {
     }, [user.subscribed_groups])
 
     return (
-        <div className="Group-details">
+        <div className="Secondary-page-details">
             <ExploreNav />
-            <div className="Group-header">
-                <img className="Group-header-image" src={group.cover_image} />
+            <div className="Secondary-page-header">
+                <img className="Secondary-page-header-image" src={group.cover_image} />
                 <RedBlueBar id={group._id} redScore = {group.red_score} blueScore = {group.blue_score} indigo= {group.indigo} updateFunction={UpdateIndigoGroup}/>
-                <h3>{group.name}</h3>
-                <h6 className="Username" onClick={()=>userNavigate()}>Created By: {username}</h6>
-                {
-                    (userId === user._id) ?
-                    <button onClick={()=>groupDisband()}>Disband Group</button>
-                    : ''
-                }
-                <Follow 
-                    item={group}
-                    followers={group.follower_counter}
-                    user={user} 
-                    userAttribute={user.subscribed_groups} 
-                    updateFunction={FollowUnfollowGroup} 
-                    followUserFunction ={FollowGroupUser} 
-                    unfollowUserFunction ={UnfollowGroupUser}
-                />
+                <div className="Secondary-page-info">
+                    <div className="Secondary-page-about">
+                        <h3>{group.name}</h3>
+                        <h6 className="Username" onClick={()=>userNavigate()}>Created By: <span className="Highlighted">{username}</span></h6>
+                        {
+                            (userId === user._id) ?
+                            <div  className="Disband" onClick={()=>groupDisband()}>
+                                <h6>Disband Group</h6>
+                            </div>
+                            : ''
+                        }
+                    </div>
+                    <Follow 
+                        item={group}
+                        followers={group.follower_counter}
+                        user={user} 
+                        userAttribute={user.subscribed_groups} 
+                        updateFunction={FollowUnfollowGroup} 
+                        followUserFunction ={FollowGroupUser} 
+                        unfollowUserFunction ={UnfollowGroupUser}
+                    />
+                </div>
             </div>
-            <div className="Channel-container">
-                <h3>Channels</h3>
+            <div className="Map-container">
+                <h3 className="Map-title">Channels</h3>
                 <Channels id = {id} getChannels={GetChannelsByGroup}/>
             </div>
         </div>

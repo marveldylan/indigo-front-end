@@ -62,15 +62,14 @@ const Follow = ({ item, followers, user, userAttribute, updateFunction, followUs
 
     return (
         <div className="Follow-container">
-            {
-                following ?
-                    <button onClick={()=>handleClick()}>Unfollow</button>
-                :   <button onClick={()=>handleClick()}>Follow</button>
-            }
             <div className="Follow-count-container">
                 <h4>Followers: {followers}</h4>
             </div>
-
+            {
+                following ?
+                    <button className="Follow-btn" onClick={()=>handleClick()}>Unfollow</button>
+                :   <button className="Follow-btn" onClick={()=>handleClick()}>Follow</button>
+            }
             
         </div>
     )
