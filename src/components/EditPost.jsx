@@ -7,7 +7,8 @@ const EditPost = ({ item, user, setEdit, setUpdate, update }) => {
     const [ formValues, setFormValues ] = useState({
         title: item.title,
         content: item.content,
-        attachment: item.attachment
+        image: item.image,
+        video: item.video
     });
 
     const deletePost = async () => {

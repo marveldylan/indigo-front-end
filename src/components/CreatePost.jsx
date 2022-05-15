@@ -6,7 +6,8 @@ const CreatePost = ({channel, user, setShowCreatePost}) => {
     const [ formValues, setFormValues ] = useState({
         title: channel.title,
         content: channel.content,
-        attachment: channel.attachment,
+        image: '',
+        video: '',
         background: user.post_background
     });
 
@@ -20,10 +21,11 @@ const CreatePost = ({channel, user, setShowCreatePost}) => {
             user._id,
             formValues.title,
             formValues.content,
-            formValues.attachment,
+            formValues.image,
+            formValues.video,
             formValues.background
         )
-        setFormValues({...formValues, title: '', content: '', attachment: ''})
+        setFormValues({...formValues, title: '', content: '', image: '', video: ''})
         setShowCreatePost(false)
     }
 

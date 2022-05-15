@@ -1,11 +1,12 @@
 import Client from './api';
 
-export const CreateNewPost = async (channelId, userId, title, content, attachment, background) => {
+export const CreateNewPost = async (channelId, userId, title, content, image, video, background) => {
     try {
         const res = await Client.post(`/posts/${channelId}/${userId}`, {
             title: title,
             content: content,
-            attachment: attachment,
+            image: image,
+            video: video,
             background: background
 
         })
@@ -43,12 +44,13 @@ export const GetPostById = async (id) => {
     }
 }
 
-export const UpdatePost = async (id, postTitle, postContent, postAttachment) => {
+export const UpdatePost = async (id, postTitle, postContent, postImage, postVideo) => {
     try {
         const res = await Client.put(`/posts/${id}`, {
             title: postTitle,
             content: postContent,
-            attachment: postAttachment
+            image: postImage,
+            video: postVideo
         })
         return res.data
     } catch (error) {
