@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { FollowUnfollowChannel } from "../services/ChannelServices";
 import { UnfollowChannelUser } from "../services/UserServices";
 import { FollowChannelUser } from "../services/UserServices";
-import { UserContext } from "../contexts/userContext"; 
+import { UserContext } from "../contexts/userContext";
+import { UpdateIndigoChannel } from "../services/ChannelServices";
 
 const ChannelDetails = ({ channel }) => {
 
@@ -30,7 +31,7 @@ const ChannelDetails = ({ channel }) => {
                     followUserFunction ={FollowChannelUser} 
                     unfollowUserFunction ={UnfollowChannelUser}
                 /> */}
-                <RedBlueBar redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} />
+                <RedBlueBar id={channel._id} redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} updateFunction={UpdateIndigoChannel} />
                 <button onClick={()=>handleClick()}>Go To Channel</button>
         </div>
     )

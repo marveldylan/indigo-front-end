@@ -13,6 +13,7 @@ import { GetPostsByChannel } from "../services/PostServices";
 import { UserContext } from "../contexts/userContext";
 import { useNavigate } from "react-router-dom";
 import { DeleteChannel } from "../services/ChannelServices";
+import { UpdateIndigoChannel } from "../services/ChannelServices";
 
 
 
@@ -63,7 +64,7 @@ const ChannelDetails = () => {
             <ExploreNav />
             <div className="Channel-header">
                 <img className="Channel-header-image" src={channel.cover_image} />
-                <RedBlueBar redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} />
+                <RedBlueBar id={channel._id} redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} updateFunction={UpdateIndigoChannel} />
                 <h3>{channel.name}</h3>
                 <h6 className="Username" onClick={()=>userNavigate()}>Created By: {username}</h6>
                 {

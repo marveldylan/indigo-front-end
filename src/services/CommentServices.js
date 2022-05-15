@@ -26,6 +26,19 @@ export const GetCommentByPost = async (id) => {
     }
 }
 
+export const UpdateIndigoComment= async (id, redScore, blueScore, indigoScore) => {
+    try {
+        const res = await Client.put(`/comments/${id}`, {
+            red_score: redScore,
+            blue_score: blueScore,
+            indigo: indigoScore
+        })
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
 
 export const CreateComment = async (userId, postId, commentContent, commentBackground) => {
     try {

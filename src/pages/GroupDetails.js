@@ -11,6 +11,7 @@ import { FollowGroupUser } from "../services/UserServices";
 import { UserContext } from "../contexts/userContext"; 
 import { GetChannelsByGroup } from "../services/ChannelServices";
 import { DeleteGroup } from "../services/GroupServices";
+import { UpdateIndigoGroup } from "../services/GroupServices";
 
 
 
@@ -51,7 +52,7 @@ const GroupDetails = () => {
             <ExploreNav />
             <div className="Group-header">
                 <img className="Group-header-image" src={group.cover_image} />
-                <RedBlueBar redScore = {group.red_score} blueScore = {group.blue_score} indigo= {group.indigo} />
+                <RedBlueBar id={group._id} redScore = {group.red_score} blueScore = {group.blue_score} indigo= {group.indigo} updateFunction={UpdateIndigoGroup}/>
                 <h3>{group.name}</h3>
                 <h6 className="Username" onClick={()=>userNavigate()}>Created By: {username}</h6>
                 {

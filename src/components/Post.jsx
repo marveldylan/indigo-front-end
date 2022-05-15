@@ -4,6 +4,7 @@ import Reply from "./Reply";
 import CommentMap from "./CommentMap";
 import { useNavigate } from "react-router-dom";
 import RedBlueBarSmall from "./RedBlueBarSmall";
+import { UpdateIndigoPost } from "../services/PostServices";
 
 
 const Post = ({ item, user, setUpdate, update }) => {
@@ -19,26 +20,28 @@ const Post = ({ item, user, setUpdate, update }) => {
     const [edit, setEdit] = useState(false)
     const [date, setDate] = useState('')
     const [channel, setChannel] = useState('')
+    const [contentType, setContentType] = useState('')
 
-    const viewPostComments = (id) => {
+    const viewPostComments = () => {
         viewComments ? setViewComments(false) : setViewComments(true)
     }
 
-    const replyPost = (id) => {
+    const replyPost = () => {
         reply ? setReply(false) : setReply(true)
     }
 
-    const editPost = (id) => {
+    const editPost = () => {
        edit ? setEdit(false) : setEdit(true)
     }
 
 
 
     useEffect(()=>{
-        const convertDateSetName = () => {
+        const convertDateSetName = async () => {
             let formattedDate = new Date(item.updatedAt)
             setDate(`${(formattedDate.getMonth()+1).toString()}-${formattedDate.getDay()}-${formattedDate.getFullYear()} ${formattedDate.getUTCHours()}:${formattedDate.getUTCMinutes()}:${formattedDate.getUTCSeconds()} UTC`)
-            setChannel(item.channel_id.name)
+            await setChannel(item.channel_id.name)
+            setContentType(item.content_type)
         }
         convertDateSetName()
     }, [edit])
@@ -64,12 +67,27 @@ const Post = ({ item, user, setUpdate, update }) => {
                         <h6>{date}</h6>
                         <h5>{channel}</h5>
                         <h5 className="Post-title">{item.title}</h5>
-                        <h6 className="Post-content">{item.content}</h6>   
+                        {
+                            contentType === 'text' ?
+                            <h6 className="Post-content">{item.content}</h6>
+                            : ''
+                        }
+                        {
+                            contentType === 'image' ?
+                            <img className="Post-image" src={item.image} />
+                            : ''
+                        }
+                        {
+                            contentType === 'video' ?
+                            <iframe className="Post-video" src={item.video}></iframe>
+                            : ''
+                        }
+
                     </div>
-                    <RedBlueBarSmall redScore={item.red_score} blueScore={item.blue_score} indigo={item.indigo}/>
+                    <RedBlueBarSmall id={item._id} redScore={item.red_score} blueScore={item.blue_score} indigo={item.indigo} updateFunction={UpdateIndigoPost}/>
                     <div className="Post-actions-container">
-                        <button onClick={()=>viewPostComments(item._id)}>View {item.comment_counter} Comments</button>
-                        <button onClick={()=>replyPost(item._id)}>Reply</button>
+                        <button onClick={()=>viewPostComments()}>View {item.comment_counter} Comments</button>
+                        <button onClick={()=>replyPost()}>Reply</button>
                     </div>
                     {
                         reply ?

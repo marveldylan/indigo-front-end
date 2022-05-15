@@ -59,6 +59,18 @@ export const UpdatePost = async (id, postTitle, postContentType, postContent, po
         throw error
     }
 }
+export const UpdateIndigoPost = async (id, redScore, blueScore, indigoScore) => {
+    try {
+        const res = await Client.put(`/posts/${id}`, {
+            red_score: redScore,
+            blue_score: blueScore,
+            indigo: indigoScore
+        })
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
 
 export const DeletePost = async (id) => {
     try {

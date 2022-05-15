@@ -48,6 +48,19 @@ export const GetGroupById = async (id) => {
     }
 }
 
+export const UpdateIndigoGroup= async (id, redScore, blueScore, indigoScore) => {
+    try {
+        const res = await Client.put(`/groups/${id}`, {
+            red_score: redScore,
+            blue_score: blueScore,
+            indigo: indigoScore
+        })
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
 export const FollowUnfollowGroup = async (id, followCount) => {
     try {
             const res = await Client.put(`/groups/${id}`,{ follower_counter: followCount})

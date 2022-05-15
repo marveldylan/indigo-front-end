@@ -67,6 +67,19 @@ export const FollowUnfollowChannel= async (id, followCount) => {
     }
 }
 
+export const UpdateIndigoChannel = async (id, redScore, blueScore, indigoScore) => {
+    try {
+        const res = await Client.put(`/channels/${id}`, {
+            red_score: redScore,
+            blue_score: blueScore,
+            indigo: indigoScore
+        })
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
 export const DeleteChannel = async (id) => {
     try {
         const res = await Client.delete(`/channels/${id}`)

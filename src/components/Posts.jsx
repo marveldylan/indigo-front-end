@@ -9,7 +9,8 @@ const Posts = ({ id, getPosts, user }) => {
     useEffect(()=> {
         const handlePosts = async () => {
             const data = await getPosts(id)
-            setPosts(data.posts)
+            // setPosts(data.posts)
+            setPosts(data.posts.sort((a, b) => a.updatedAt.localeCompare(b.updatedAt)).reverse())
         }
         handlePosts()
     }, [])
