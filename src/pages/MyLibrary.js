@@ -22,6 +22,12 @@ const MyLibrary = () => {
     const [showSavedPosts, setShowSavedPosts] = useState(false)
     const [showMyPosts, setShowMyPosts] = useState(false)
     const [showComments, setShowComments] = useState(false)
+    const [ update, setUpdate] = useState(false)
+    const [refresh, setRefresh] = useState(false)
+
+    const handleRefresh = () => {
+        refresh ? setRefresh(false) : setRefresh(true)
+    }
 
     const handleSavedPostsClick = () => {
         showSavedPosts ? setShowSavedPosts(false) : setShowSavedPosts(true)
@@ -84,13 +90,15 @@ const MyLibrary = () => {
         handleSavedPosts()
         handleUserPosts()
         handleUserComments()
-    }, [])
+        console.log(user, 'library user')
+    }, [showMyPosts, showComments, showSavedPosts, update])
 
     return (
         <div className="Main-container">
             <UserNav />
             <div className="Library-container">
                 <h1>My Library</h1>
+                <button onClick={()=>handleRefresh()}>Refresh</button>
                 <h4>Subscribed Groups</h4>
                     <ItemMap items={subbedGroups} basePath='/groups/' />
                 <h4>Subscribed Channels</h4>
@@ -102,20 +110,20 @@ const MyLibrary = () => {
                 <h4 onClick={()=>handleSavedPostsClick()}>Saved Posts</h4>
                     {
                         showSavedPosts ?
-                        <PostMap items={savedPosts} />
+                        <PostMap items={savedPosts} user={user} setUpdate={setUpdate} update={update}/>
                         : ''
                     }
                 <h4 className="My-Posts-header" onClick={()=>handleMyPostsClick()}>My Posts</h4>
                     {
                         showMyPosts ?
-                        <PostMap items={userPosts}/>
+                        <PostMap items={userPosts} user={user} setUpdate={setUpdate} update={update}/>
                         : ''
                     }
 
                 <h4 onClick={()=>handleCommentsClick()}>My Comments</h4>
                 {
                     showComments ?
-                    <PostMap items={comments} />
+                    <PostMap items={comments} user={user} setUpdate={setUpdate} update={update}/>
                     : ''
                 }
             </div>

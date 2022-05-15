@@ -22,6 +22,8 @@ const GroupDetails = () => {
 
     const [group, setGroup] = useState({})
 
+    const [username, setUsername] = useState('')
+
 
 
     useEffect(()=>{
@@ -29,6 +31,7 @@ const GroupDetails = () => {
         const handleGroup = async () => {
             const data = await GetGroupById (id)
             setGroup(data.group)
+            setUsername(data.group.user_id.username)
         }
         
         handleGroup()
@@ -39,7 +42,9 @@ const GroupDetails = () => {
             <ExploreNav />
             <div className="Group-header">
                 <img className="Group-header-image" src={group.cover_image} />
+                <RedBlueBar redScore = {group.red_score} blueScore = {group.blue_score} indigo= {group.indigo} />
                 <h3>{group.name}</h3>
+                <h6>Created By: {username}</h6>
                 <Follow 
                     item={group}
                     followers={group.follower_counter}
@@ -49,7 +54,6 @@ const GroupDetails = () => {
                     followUserFunction ={FollowGroupUser} 
                     unfollowUserFunction ={UnfollowGroupUser}
                 />
-                <RedBlueBar redScore = {group.red_score} blueScore = {group.blue_score} indigo= {group.indigo} />
             </div>
             <div className="Channel-container">
                 <h3>Channels</h3>

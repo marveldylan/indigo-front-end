@@ -15,7 +15,7 @@ const Channels = ({id, getChannels}) => {
     }, [])
 
     return (
-        <ItemMap items={channels} basePath='/explore/channels/' />
+        <ItemMap items={channels} basePath='/channels/' />
     )
 }
 

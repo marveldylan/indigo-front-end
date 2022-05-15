@@ -91,3 +91,52 @@ export const UnfollowChannelUser = async (userId, channelId) => {
         throw error
     }
 }
+
+export const FollowUser = async (userId, followUserId) => {
+    try {
+        const res = await Client.put(`/users/${userId}/follow/user/${followUserId}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
+
+export const UnfollowUser = async (userId, unfollowUserId) => {
+    try {
+        const res = await Client.put(`/users/${userId}/unfollow/user/${unfollowUserId}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
+export const UpdateUser = async (
+    id,
+    firstName,
+    lastName,
+    username,
+    email,
+    about,
+    profileImage,
+    coverImage,
+    postBackground,
+    commentBackground
+) => {
+    try {
+        const res = await Client.put(`/users/${id}`, {
+            first_name: firstName,
+            last_name: lastName,
+            username: username,
+            email: email,
+            about: about,
+            profile_image: profileImage,
+            cover_image: coverImage,
+            post_background: postBackground,
+            comment_background: commentBackground
+        })
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}

@@ -27,3 +27,25 @@ export const GetPostById = async (id) => {
         throw error
     }
 }
+
+export const UpdatePost = async (id, postTitle, postContent, postAttachment) => {
+    try {
+        const res = await Client.put(`/posts/${id}`, {
+            title: postTitle,
+            content: postContent,
+            attachment: postAttachment
+        })
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
+
+export const DeletePost = async (id) => {
+    try {
+        const res = await Client.delete(`/posts/${id}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}

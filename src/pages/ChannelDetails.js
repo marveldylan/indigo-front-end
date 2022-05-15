@@ -2,6 +2,7 @@ import ExploreNav from "../components/ExploreNav";
 import Follow from "../components/Follow";
 import RedBlueBar from "../components/RedBlueBar";
 import Posts from "../components/Posts";
+import CreatePost from "../components/CreatePost";
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { GetChannelById } from "../services/ChannelServices";
@@ -21,7 +22,7 @@ const ChannelDetails = () => {
     const [user, setUser] = useContext(UserContext)
 
     const [channel, setChannel] = useState({})
-
+    const [username, setUsername] = useState('')
 
 
     useEffect(()=>{
@@ -29,6 +30,7 @@ const ChannelDetails = () => {
         const handleChannel = async () => {
             const data = await GetChannelById (id)
             setChannel(data.channel)
+            setUsername(data.channel.user_id.username)
         }
         
         handleChannel()
@@ -39,7 +41,9 @@ const ChannelDetails = () => {
             <ExploreNav />
             <div className="Channel-header">
                 <img className="Channel-header-image" src={channel.cover_image} />
+                <RedBlueBar redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} />
                 <h3>{channel.name}</h3>
+                <h6>Created By: {username}</h6>
                 <Follow 
                     item={channel}
                     followers={channel.follower_counter}
@@ -49,11 +53,17 @@ const ChannelDetails = () => {
                     followUserFunction ={FollowChannelUser} 
                     unfollowUserFunction ={UnfollowChannelUser}
                 />
-                <RedBlueBar redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} />
             </div>
             <div className="Post-container">
                 <h3>Posts</h3>
-                <Posts id = {id} getPosts={GetPostsByChannel}/>
+                {
+                    channel.user_id._id === user._id ?
+                    <div>
+                        <CreatePost channel={channel} user={user}/>
+                    </div>
+                    : ''
+                }
+                <Posts id = {id} getPosts={GetPostsByChannel} user={user}/>
             </div>
         </div>
     )

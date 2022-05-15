@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PostMap from "./PostMap";
 
 
-const Posts = ({ id, getPosts }) => {
+const Posts = ({ id, getPosts, user }) => {
 
     const [posts, setPosts] = useState([])
 
@@ -15,8 +15,8 @@ const Posts = ({ id, getPosts }) => {
     }, [])
 
     return (
-        <div>
-            <PostMap items={posts} />
+        <div className="Post-list-container">
+            <PostMap items={posts} user={user} />
         </div>
     )
 }

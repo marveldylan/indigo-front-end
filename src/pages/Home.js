@@ -1,28 +1,57 @@
-import { useState, useEffect } from "react";
-import Navbar from '../components/Navbar';
-import Feed from '../components/Feed';
-import { GetUserById } from "../services/UserServices";
+import { useState, useEffect,useContext } from "react";
+import { GetAllCategories } from "../services/CategoryServices";
+import ExploreNav from "../components/ExploreNav";
+import ItemMap from "../components/ItemMap";
+
+const Home = () => {
 
 
-const Home = (props) => {
+    const [items, setItems] = useState([])
+    const [sortBy, setSort] = useState('AZ')
+    const [trending, setTrending] = useState([])
 
-    const [currentUser, setUser] = useState({})
-    const [navState, setNavState] = useState('Navbar-uncollapsed')
-    const [homeState, setHomeState] = useState('Home-uncollapsed')
+    const handleSort = (event) => {
+        setSort(event.target.value);
+    }
+    
+    useEffect(() => {
+        const handleItems = async () => {
+            const data = await GetAllCategories()
+            setTrending(data.categories.sort((a, b) => a.views - b.views).slice(0, 5))
+            if (sortBy === 'AZ') {
+                // Alphabetical sort direction taken from Stack Overflow: https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
+                setItems(data.categories.sort((a, b) => a.name.localeCompare(b.name)))
+            } else if (sortBy === 'ZA') {
+                setItems(data.categories.sort((a, b) => a.name.localeCompare(b.name)).reverse())
+            }
 
-
-    useEffect(()=> {
-        const handleUser = async (id) => {
-            const data = await GetUserById(id)
-            setUser(data.user)
-            console.log(currentUser)
         }
-        handleUser(props.user.id)
-    }, [])
+        handleItems()
+    }, [sortBy])
 
     return (
         <div className="Main-container">
-            <Feed props={props} />
+            <ExploreNav />
+            <div className="Item-container">
+                <div className="Item-header-container">
+                    <h4>Trending</h4>
+                </div>
+                <ItemMap items={trending} basePath='/categories/' />
+                <div className='Item-container-expanded'>
+                    <div className="Item-header-container">
+                        <h4>Explore Categories</h4>
+                    </div>
+                    <div className="Item-back-arrow">
+                    </div>
+                    <div className="Item-sort-container">
+                        <select className="Item-sort-listbox" value={sortBy} onChange={handleSort}>
+                            <option value="AZ">A - Z</option>
+                            <option value="ZA">Z - A</option>
+                        </select>
+                    </div>
+                </div>
+                <ItemMap items={items} basePath='/categories/' />
+            </div>
         </div>
     )
 }

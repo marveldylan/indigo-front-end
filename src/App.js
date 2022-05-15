@@ -14,6 +14,8 @@ import CategoryDetails from './pages/CategoryDetails';
 import GroupDetails from './pages/GroupDetails';
 import ChannelDetails from './pages/ChannelDetails';
 import ExploreChannels  from './pages/ExploreChannels';
+import EditProfile from './pages/EditProfile';
+import UserProfile from './pages/UserProfile';
 import NotSignedIn from './pages/NotSignedin';
 import { GetUserById } from "./services/UserServices";
 import { UserContext } from './contexts/userContext';
@@ -120,7 +122,7 @@ function App() {
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
-                            <Route path = "/groups/:id" element={<GroupDetails
+                <Route path = "/groups/:id" element={<GroupDetails
                   user={user}
                   setUser={setCurrentUser}
                   authenticated={authenticated}
@@ -149,6 +151,18 @@ function App() {
                   authenticated={authenticated}
                   handleLogout={handleLogout}
                 />} />
+                <Route path = "/edit-profile" element={<EditProfile
+                  user={user}
+                  currentUser={currentUser}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
+                <Route path = "/users/:id" element={<UserProfile
+                  user={user}
+                  setUser={setCurrentUser}
+                  authenticated={authenticated}
+                  handleLogout={handleLogout}
+                />} />
             </Routes>
             </div>
             <div className="Margin"></div>
@@ -170,6 +184,7 @@ function App() {
             <Route path = "/explore/channels" element={<NotSignedIn />} />
             <Route path = "/channels/:id" element={<NotSignedIn />} />
             <Route path = "/account" element={<NotSignedIn />} />
+            <Route path = "/users/:id" element={<NotSignedIn />} />
             </Routes>
         }
 
