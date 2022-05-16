@@ -3,7 +3,7 @@
 const MessageBoard = () => {
     return (
         <div className="Message-board">
-            <img className="Message-image" src="https://i.imgur.com/STaCLis.png" />
+            <img className="Message-image" src="https://i.imgur.com/mccZ2Qs.png" />
             <h3>Welcome</h3>
             <p>project_indigo is a new kind of social media platform that connects builders, creatives, hobbysts, explorers, enthusiasts, professionals and amateurs to share knowledge and build communities around collective skills and passions. We're interested in taking infotainment to a whole new level, with professional and user-created channels, content, and tutorials on everything from audio engineering to how to string a tennis racket.</p>
             <h4>Who Are We?</h4>
