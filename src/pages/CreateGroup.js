@@ -46,7 +46,7 @@ const CreateGroup = ({user}) => {
 
     return(
         <div>
-            <h6>Select Category to Add Group:</h6>
+            <h4 className="Create-title">Select Category to Add Group:</h4>
             <div className="Item-grid">
                 {
                     categories.map((item)=> (
@@ -61,7 +61,7 @@ const CreateGroup = ({user}) => {
             </div>
             <div className="Create-channel-container">
             <input
-                    classname="Create-channel-text"
+                    className="Post-update-form"
                     type="text"
                     name="name"
                     value={formValues.name}
@@ -70,7 +70,7 @@ const CreateGroup = ({user}) => {
                     required
                 />
                 <textarea
-                    className="Create-channel-text"
+                    className="Post-update-form"
                     type="text"
                     name="image"
                     value={formValues.image}
@@ -79,7 +79,7 @@ const CreateGroup = ({user}) => {
                 ></textarea>
             </div>
             <div className="Channel-actions-container">
-                <button onClick={()=>createGroup()}>Create Group</button>
+                <button className="Post-button" onClick={()=>createGroup()}>Create Group</button>
             </div>
         </div>
     )

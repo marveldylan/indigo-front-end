@@ -23,6 +23,7 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
 
     return(
         <div>
+            <h3>project_indigo</h3>
             <form className='Sign-in-form'>
                 <input 
                     type="email"

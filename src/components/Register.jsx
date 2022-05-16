@@ -40,6 +40,7 @@ const Register = () => {
 
     return(
         <div className="Register-container">
+            <h3>Register</h3>
             <form className="Register-form" onSubmit={handleSubmit}>
             <input
             className="Post-update-form"
@@ -95,7 +96,7 @@ const Register = () => {
             value={formValues.confirmPassword}
             required
             />
-            <button className='RPost-button'
+            <button className='Post-button'
                 disabled={
                 !formValues.email ||
                 (!formValues.password &&

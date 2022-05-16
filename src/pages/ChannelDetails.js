@@ -91,11 +91,11 @@ const ChannelDetails = () => {
                 </div>
             </div>
             <div className="Post-list-container">
-                <h3>Posts</h3>
+                <h3 className="Post-name">Posts</h3>
                 {
                     userId === user._id ?
                     <div>
-                        <button onClick={()=>showCreate()}>New Post</button>
+                        <button className="Post-button "onClick={()=>showCreate()}>New Post</button>
                     </div>
                     : ''
                 }
