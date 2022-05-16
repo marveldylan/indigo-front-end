@@ -29,11 +29,11 @@ const Landing = ({ setUser, toggleAuthenticated }) => {
                 newUser ?
                     <div className="Prompt-container">
                         <Register />
-                        <button onClick={() => handleClick()}>Back to Sign-in</button>
+                        <button className="Toggle-landing" onClick={() => handleClick()}>Back to Sign-in</button>
                     </div>
                 :   <div className="Prompt-container">
                         <SignIn setUser={setUser} toggleAuthenticated={toggleAuthenticated} />
-                        <button onClick={() => handleClick()}>Register</button>
+                        <button className="Toggle-landing" onClick={() => handleClick()}>Register</button>
                     </div>
             }
             <div></div>

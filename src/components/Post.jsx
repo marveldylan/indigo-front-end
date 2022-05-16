@@ -57,19 +57,24 @@ const Post = ({ item, user, setUpdate, update }) => {
                     {
                         (item.user_id._id === user._id) ?
                         <div className="Post-tools">
-                            <button onClick={()=>editPost(item._id)}>Edit</button>
+                            <div className="Link" onClick={()=>editPost(item._id)}>Edit</div>
                         </div>
                         : ''
                     }
                     <div className="Post-content-container">
-                        <img className="Post-profile-image" src={item.user_id.profile_image} />
-                        <h6 className="Username" onClick={()=>userNavigate(item.user_id._id)}>{item.user_id.username}</h6>
-                        <h6>{date}</h6>
-                        <h5>{channel}</h5>
-                        <h5 className="Post-title">{item.title}</h5>
+                        <div className="Post-header">
+                            <div className="Post-profile">
+                                <img className="Post-profile-image" src={item.user_id.profile_image} />
+                                <h6 className="Highlighted" onClick={()=>userNavigate(item.user_id._id)}>{item.user_id.username}</h6>
+                                <h6>{date}</h6>
+                            </div>
+                            <p className="Link">Channel: {channel}</p>
+                            <h5 className="Post-title">{item.title}</h5>
+                        </div>
+
                         {
                             contentType === 'text' ?
-                            <h6 className="Post-content">{item.content}</h6>
+                            <p className="Post-content">{item.content}</p>
                             : ''
                         }
                         {
@@ -84,21 +89,23 @@ const Post = ({ item, user, setUpdate, update }) => {
                         }
 
                     </div>
-                    <RedBlueBarSmall id={item._id} redScore={item.red_score} blueScore={item.blue_score} indigo={item.indigo} updateFunction={UpdateIndigoPost}/>
-                    <div className="Post-actions-container">
-                        <button onClick={()=>viewPostComments()}>View {item.comment_counter} Comments</button>
-                        <button onClick={()=>replyPost()}>Reply</button>
+                    <div className="Post-bottom">
+                        <RedBlueBarSmall id={item._id} redScore={item.red_score} blueScore={item.blue_score} indigo={item.indigo} updateFunction={UpdateIndigoPost}/>
+                        <div className="Post-actions-container">
+                            <button className="Post-button" onClick={()=>viewPostComments()}>View {item.comment_counter} Comments</button>
+                            <button className="Post-button" onClick={()=>replyPost()}>Reply</button>
+                        </div>
+                        {
+                            reply ?
+                            <Reply item={item} user={user} setUpdate={setUpdate} update={update} reply={reply} setReply={setReply}/>
+                            : ''
+                        }
+                        {
+                            viewComments ?
+                            <CommentMap post={item}/>
+                            : ''
+                        }
                     </div>
-                    {
-                        reply ?
-                        <Reply item={item} user={user} setUpdate={setUpdate} update={update} reply={reply} setReply={setReply}/>
-                        : ''
-                    }
-                    {
-                        viewComments ?
-                        <CommentMap post={item}/>
-                        : ''
-                    }
                 </div>
         }
         </div>

@@ -42,6 +42,7 @@ const Register = () => {
         <div className="Register-container">
             <form className="Register-form" onSubmit={handleSubmit}>
             <input
+            className="Post-update-form"
             onChange={handleChange}
             name="firstName"
             type="text"
@@ -50,6 +51,7 @@ const Register = () => {
             required
             />
             <input
+            className="Post-update-form"
             onChange={handleChange}
             name="lastName"
             type="text"
@@ -58,6 +60,7 @@ const Register = () => {
             required
             />
             <input
+            className="Post-update-form"
             onChange={handleChange}
             name="username"
             type="text"
@@ -66,6 +69,7 @@ const Register = () => {
             required
             />
             <input
+            className="Post-update-form"
             onChange={handleChange}
             name="email"
             type="email"
@@ -74,6 +78,7 @@ const Register = () => {
             required
             />
             <input
+            className="Post-update-form"
             onChange={handleChange}
             type="password"
             name="password"
@@ -82,6 +87,7 @@ const Register = () => {
             required
             />
             <input
+            className="Post-update-form"
             onChange={handleChange}
             type="password"
             name="confirmPassword"
@@ -89,7 +95,7 @@ const Register = () => {
             value={formValues.confirmPassword}
             required
             />
-            <button className='Register-button'
+            <button className='RPost-button'
                 disabled={
                 !formValues.email ||
                 (!formValues.password &&

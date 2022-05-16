@@ -31,7 +31,7 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
                     placeholder="email"
                     onChange={handleChange}
                     required
-                    className='email'
+                    className='Post-update-form'
                 />
 
                 <input
@@ -41,10 +41,11 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
                     placeholder="password"
                     onChange={handleChange}
                     required
-                    className='password'
+                    className='Post-update-form'
                     autoComplete="on"
                 />
-            <button onClick={handleSubmit} disabled={!formValues.email || !formValues.password} className='Login-button'>Log In</button> </form>
+            <button className="Post-button" onClick={handleSubmit} disabled={!formValues.email || !formValues.password}>Log In</button>
+            </form>
         </div>
     )
 }

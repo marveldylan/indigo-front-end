@@ -67,26 +67,30 @@ const ChannelDetails = () => {
                 <RedBlueBar id={channel._id} redScore = {channel.red_score} blueScore = {channel.blue_score} indigo= {channel.indigo} updateFunction={UpdateIndigoChannel} />
                 <div className="Secondary-page-info">
                     <div className="Secondary-page-about">
-                <h3>{channel.name}</h3>
-                <h6 className="Username" onClick={()=>userNavigate()}>Created By: <span className="Highlighted">{username}</span></h6>
-                {
-                    (userId === user._id) ?
-                    <button onClick={()=>channelDisband()}>Disband Channel</button>
-                    : ''
-                }
-                <Follow 
-                    item={channel}
-                    followers={channel.follower_counter}
-                    user={user} 
-                    userAttribute={user.subscribed_channels} 
-                    updateFunction={FollowUnfollowChannel} 
-                    followUserFunction ={FollowChannelUser} 
-                    unfollowUserFunction ={UnfollowChannelUser}
-                />
+                        <div className="Secondary-page-name">
+                            <h3>{channel.name}</h3>
+                        </div>
+                        <div className="Secondary-page-username">
+                            <h6 className="Username" onClick={()=>userNavigate()}>Created By: <span className="Highlighted">{username}</span></h6>
+                            {
+                                (userId === user._id) ?
+                                <p  className="Disband" onClick={()=>channelDisband()}>Disband Channel</p>
+                                : ''
+                            }
+                        </div>
+                    </div>
+                    <Follow 
+                        item={channel}
+                        followers={channel.follower_counter}
+                        user={user} 
+                        userAttribute={user.subscribed_channels} 
+                        updateFunction={FollowUnfollowChannel} 
+                        followUserFunction ={FollowChannelUser} 
+                        unfollowUserFunction ={UnfollowChannelUser}
+                    />
+                </div>
             </div>
-            </div>
-            </div>
-            <div className="Post-container">
+            <div className="Post-list-container">
                 <h3>Posts</h3>
                 {
                     userId === user._id ?

@@ -98,7 +98,7 @@ const MyLibrary = () => {
             <UserNav />
             <div className="Library-container">
                 <h1>My Library</h1>
-                <button onClick={()=>handleRefresh()}>Refresh</button>
+                <button className="Post-button" onClick={()=>handleRefresh()}>Refresh</button>
                 <h4>Subscribed Groups</h4>
                     <ItemMap items={subbedGroups} basePath='/groups/' />
                 <h4>Subscribed Channels</h4>
@@ -107,13 +107,13 @@ const MyLibrary = () => {
                     <ItemMap items={userGroups} basePath='/groups/' /> 
                 <h4>My Channels</h4>
                     <ItemMap items={userChannels} basePath='/channels/' />
-                <h4 onClick={()=>handleSavedPostsClick()}>Saved Posts</h4>
+                <h4 className="Highlighted" onClick={()=>handleSavedPostsClick()}>Saved Posts</h4>
                     {
                         showSavedPosts ?
                         <PostMap items={savedPosts} user={user} setUpdate={setUpdate} update={update}/>
                         : ''
                     }
-                <h4 className="My-Posts-header" onClick={()=>handleMyPostsClick()}>My Posts</h4>
+                <h4 className="Highlighted" onClick={()=>handleMyPostsClick()}>My Posts</h4>
                     {
                         showMyPosts ?
                         <PostMap items={userPosts} user={user} setUpdate={setUpdate} update={update}/>

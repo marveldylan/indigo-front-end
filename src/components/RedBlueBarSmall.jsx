@@ -32,21 +32,16 @@ const RedBlueBarSmall = ({ id, redScore, blueScore, indigo, updateFunction }) =>
     }, [redWidth, red, blue, indigoScore])
 
     return (
-        <div className="Red-blue-container-small">
-            <div className="Blue-click-small" onClick={()=>handleClick('blue')}>
-                <h3>Click Blue</h3>
-            </div>
-            <div className="Blue-bar-small" style={{ width: "100%" }}>
-                <div className="Red-bar-small" style={{ width: `${redWidth*100}%`}}>
+        <div className="Bar-small">
+            <div className="Red-blue-container-small">
+                <div className="Blue-bar-small" style={{ width: "100%" }} onClick={()=>handleClick('blue')}>
+                    <div className="Red-bar-small" style={{ width: `${redWidth*100}%`}} onClick={()=>handleClick('red')}>
+                    </div>
                 </div>
             </div>
-            <div className="Red-click-small" onClick={()=>handleClick('red')}>
-                <h3>Click Red</h3>
-            </div>
             <div className="Indigo-container-small">
-                <p className="Indigo-small">Indigo: {indigo}</p>
+                <h5 className="Indigo-small">Indigo: {indigo}</h5>
             </div>
-
         </div>
     )
 }

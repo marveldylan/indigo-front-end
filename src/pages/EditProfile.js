@@ -45,10 +45,10 @@ const EditProfile = () => {
     return (
         <div className="Edit-profile-container">
             <div className="Edit-public">
-                <h6>Public Information</h6>
+                <h6 className="Profile-header">Public Information</h6>
                 <p className="Edit-profile-label">Username:</p>
                 <input 
-                    className="Edit-text"
+                    className="Post-update-form"
                     type="text"
                     name="username"
                     value={formValues.username}
@@ -57,7 +57,7 @@ const EditProfile = () => {
                 />
                 <p className="Edit-profile-label">About:</p>    
                 <textarea
-                    className="Edit-text-area"
+                    className="Post-update-form"
                     type="text"
                     name="about"
                     value={formValues.about}
@@ -66,7 +66,7 @@ const EditProfile = () => {
                 ></textarea>
                 <p className="Edit-profile-label">Profile Image:</p>
                 <input 
-                    className="Edit-text"
+                    className="Post-update-form"
                     type="text"
                     name="profileImage"
                     value={formValues.profileImage}
@@ -75,7 +75,7 @@ const EditProfile = () => {
                 />
                 <p className="Edit-profile-label">Cover Image:</p>
                 <input 
-                    className="Edit-text"
+                    className="Post-update-form"
                     type="text"
                     name="coverImage"
                     value={formValues.coverImage}
@@ -84,7 +84,7 @@ const EditProfile = () => {
                 />
                  <p className="Edit-profile-label">Post Background:</p>               
                  <input 
-                    className="Edit-text"
+                    className="Post-update-form"
                     type="text"
                     name="postBackground"
                     value={formValues.postBackground}
@@ -93,7 +93,7 @@ const EditProfile = () => {
                 />
                 <p className="Edit-profile-label">Comment Background:</p>               
                  <input 
-                    className="Edit-text"
+                    className="Post-update-form"
                     type="text"
                     name="commentBackground"
                     value={formValues.commentBackground}
@@ -102,10 +102,10 @@ const EditProfile = () => {
                 />
             </div>
             <div className="Edit-personal">
-                <h6>Personal Information</h6>
+                <h6 className="Profile-header">Personal Information</h6>
                 <p className="Edit-profile-label">First Name:</p>
                 <input 
-                    className="Edit-text"
+                    className="Post-update-form"
                     type="text"
                     name="firstName"
                     value={formValues.firstName}
@@ -114,7 +114,7 @@ const EditProfile = () => {
                 />
                 <p className="Edit-profile-label">Last Name:</p>
                 <input
-                    className="Edit-text"
+                    className="Post-update-form"
                     type="text"
                     name="lastName"
                     value={formValues.lastName}
@@ -123,7 +123,7 @@ const EditProfile = () => {
                 />
                 <p className="Edit-profile-label">Email:</p>
                 <input 
-                    className="Edit-text"
+                    className="Post-update-form"
                     type="text"
                     name="email"
                     value={formValues.email}
@@ -132,7 +132,7 @@ const EditProfile = () => {
                 />
             </div>
             <div className="Edit-actions-container">
-                <button onClick={()=>updateUser()}>Update</button>
+                <button className="Post-button" onClick={()=>updateUser()}>Update </button>
             </div>
         </div>
     )

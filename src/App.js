@@ -86,7 +86,7 @@ function App() {
             <div className="Margin"></div>
             <div className="Nav-wrapper">
                 <div className="Nav-collapse">
-                    <button onClick={()=>handleNav()}>Collapse</button>
+                    <button className="Post-button" onClick={()=>handleNav()}>X</button>
                 </div>
                 <Navbar 
                     user = {user} 

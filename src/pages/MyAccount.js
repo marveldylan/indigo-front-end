@@ -17,15 +17,17 @@ const MyAccount = ({user, currentUser, authenticated, handleLogout}) => {
             <img className="Account-cover-image" src={currentUser.cover_image} />
             <img className="Account-profile-image" src={currentUser.profile_image} />
             <RedBlueBar redScore={user.red_score} blueScore={user.blue_score} indigo={user.indigo}/>
-            <h1>My Profile</h1>
-            <button onClick={()=>editProfile()}>Edit Profile</button>
-            <h2> {currentUser.username}</h2>
-            <h3>Name: {currentUser.first_name} {currentUser.last_name}</h3>
-            <h4>Followers: {currentUser.followers.length}</h4>
-            <h4>Following: {currentUser.following.length}</h4>
-            <h2>About:</h2>
-            <h2>Contact:</h2>
-            <h3>email: {currentUser.email}</h3>
+            <div className="Account-container">
+                <p className="Post-label">My Profile</p>
+                <button className="Post-button" onClick={()=>editProfile()}>Edit Profile</button>
+                <p className="Post-label"> {currentUser.username}</p>
+                <p className="Post-label">Name: {currentUser.first_name} {currentUser.last_name}</p>
+                <p className="Post-label">Followers: {currentUser.followers.length}</p>
+                <p className="Post-label">Following: {currentUser.following.length}</p>
+                <p className="Post-label">About: {currentUser.about}</p>
+                <p className="Post-label">Contact:</p>
+                <p className="Post-label">email: {currentUser.email}</p>
+            </div>
 
     </div>
     )

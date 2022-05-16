@@ -41,13 +41,16 @@ const EditPost = ({ item, user, setEdit, setUpdate, update }) => {
 
     return (
         <div className="Edit-post-container">
-            <h3 onClick={()=> setEdit(false)}>Back</h3>
-            <button onClick={()=>deletePost()}>Delete</button>
+            <div className="Edit-actions">
+                <p className="Link" onClick={()=> setEdit(false)}>Back</p>
+                <p className="Link" onClick={()=>deletePost()}>Delete</p>
+            </div>
             <div className="Post-container">
                 <div className="Post-content-container">
                     <h6>{item.user_id.username}</h6>
+                    <p className="Post-label">Title:</p>
                     <input
-                        classname="Post-update-title"
+                        className="Post-update-form"
                         type="text"
                         name="title"
                         value={formValues.title}
@@ -56,17 +59,19 @@ const EditPost = ({ item, user, setEdit, setUpdate, update }) => {
                         required
                     />
                     <div className="Post-content-type">
-                        <h6>Post Content Type</h6>
-                        <button onClick={()=>handleClick('text')}>Text</button>
-                        <button onClick={()=>handleClick('image')}>Image</button>
-                        <button onClick={()=>handleClick('video')}>Video</button>
+                        <h6>Post Content Type:</h6>
+                        <div className="Post-type-buttons">
+                            <button className="Post-btn" onClick={()=>handleClick('text')}>Text</button>
+                            <button className="Post-btn" onClick={()=>handleClick('image')}>Image</button>
+                            <button className="Post-btn" onClick={()=>handleClick('video')}>Video</button>
+                        </div>
                     </div>
                     {
                         formValues.contentType === 'text' ?
                             <div>
-                                <p>Content:</p>
+                                <p className="Post-label">Content:</p>
                                 <textarea
-                                    className="Post-update-content"
+                                    className="Post-update-form"
                                     type="text"
                                     name="content"
                                     value={formValues.content}
@@ -79,9 +84,9 @@ const EditPost = ({ item, user, setEdit, setUpdate, update }) => {
                     {
                         formValues.contentType === 'image' ?
                             <div>
-                                <p>Image Link:</p>
+                                <p className="Post-label">Image Link:</p>
                                 <input
-                                    className="Post-update-image"
+                                    className="Post-update-form"
                                     type="text"
                                     name="image"
                                     value={formValues.image}
@@ -94,9 +99,9 @@ const EditPost = ({ item, user, setEdit, setUpdate, update }) => {
                     {
                         formValues.contentType === 'video' ?
                             <div>
-                                <p>Video Link:</p>
+                                <p className="Post-label">Video Link:</p>
                                 <input
-                                    className="Post-update-video"
+                                    className="Post-update-form"
                                     type="text"
                                     name="video"
                                     value={formValues.video}
@@ -108,7 +113,7 @@ const EditPost = ({ item, user, setEdit, setUpdate, update }) => {
                     }
                 </div>
                 <div className="Post-actions-container">
-                    <button onClick={()=>updatePost()}>Update</button>
+                    <button className="Post-button" onClick={()=>updatePost()}>Update</button>
                 </div>
             </div>
         </div>

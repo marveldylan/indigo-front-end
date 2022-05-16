@@ -55,15 +55,19 @@ const GroupDetails = () => {
                 <RedBlueBar id={group._id} redScore = {group.red_score} blueScore = {group.blue_score} indigo= {group.indigo} updateFunction={UpdateIndigoGroup}/>
                 <div className="Secondary-page-info">
                     <div className="Secondary-page-about">
-                        <h3>{group.name}</h3>
-                        <h6 className="Username" onClick={()=>userNavigate()}>Created By: <span className="Highlighted">{username}</span></h6>
-                        {
-                            (userId === user._id) ?
-                            <div  className="Disband" onClick={()=>groupDisband()}>
-                                <h6>Disband Group</h6>
-                            </div>
-                            : ''
-                        }
+                        <div className="Secondary-page-name">
+                            <h3>{group.name}</h3>
+                        </div>
+                        <div className="Secondary-page-username">
+                            <p className="Username" onClick={()=>userNavigate()}>Created By: <span className="Highlighted">{username}</span></p>
+                            {
+                                (userId === user._id) ?
+            
+                                    <p className="Disband" onClick={()=>groupDisband()}>Disband</p>
+
+                                : ''
+                            }
+                        </div>
                     </div>
                     <Follow 
                         item={group}
