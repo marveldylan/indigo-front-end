@@ -55,6 +55,14 @@
     padding-right: 40px;
 }
 
+.Message-image {
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
+}
+
 .Prompt-container {
     text-align: center;
     width: 100%;
