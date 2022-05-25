@@ -35,18 +35,12 @@ const UserProfile = () => {
                 <img className="Account-cover-image" src={user.cover_image} />
                 <img className="Account-profile-image" src={user.profile_image} />
                 <RedBlueBar redScore={user.red_score} blueScore={user.blue_score} indigo={user.indigo} />
-                <h6>{user.username}</h6>
+                <h4 className="Profile-name">{user.username}</h4>
             </div>
-            <Follow 
-                item={user}
-                followers={following} 
-                user={currentUser}
-                userAttribute={currentUser.following} 
-                updateFunction={dummyFunction} 
-                followUserFunction={FollowUser}
-                unfollowUserFunction={UnfollowUser}
-            />
-            <h5>About: {user.about}</h5>
+            <div className="Profile-container">
+                <h5>About: {user.about}</h5>
+            </div>
+ 
         </div>
 
     )
