@@ -16,7 +16,7 @@ const CommentMap = ({ post }) => {
     }, [])
 
         return (
-            <div className="Item-grid">
+            <div className="Post-grid">
                 {
                     comments.map((comment)=> (
                         <Comment comment={comment} />

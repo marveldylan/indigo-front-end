@@ -48,7 +48,7 @@ const Post = ({ item, user, setUpdate, update }) => {
 
 
     return (
-        <div className="Post-card" key={item._id} style={{backgroundImage: `url(${item.background})`}}>
+        <div className="Post-card" key={item._id} style={{backgroundImage: `url(${item.background})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
             {
                 edit ?
                 <EditPost item={item} user={user} setEdit={setEdit} setUpdate={setUpdate} update={update}/>

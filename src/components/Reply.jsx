@@ -21,14 +21,14 @@ const Reply = ({ item, user, setUpdate, update, reply, setReply }) => {
         <div className="Reply-container">
             <h6>{user.username}</h6>
             <textarea
-                className="Reply-box"
+                className="Post-update-form"
                 type="text"
                 name="content"
                 value={formValues.content}
                 placeholder="Reply here"
                 onChange={handleChange}
             ></textarea>
-            <button className="submit-button" type="submit" onClick={handleSubmit} disabled={!formValues.content}>Reply</button>
+            <button className="Post-btn" type="submit" onClick={handleSubmit} disabled={!formValues.content}>Reply</button>
         </div>
         )
 }

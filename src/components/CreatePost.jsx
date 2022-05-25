@@ -4,7 +4,7 @@ import { CreateNewPost } from "../services/PostServices"
 const CreatePost = ({channel, user, setShowCreatePost, refresh, setRefresh}) => {
 
     const [ formValues, setFormValues ] = useState({
-        title: channel.title,
+        title: channel.name,
         content: channel.content,
         contentType: 'text',
         image: '',
@@ -43,31 +43,33 @@ const CreatePost = ({channel, user, setShowCreatePost, refresh, setRefresh}) => 
     }
 
     return (
-        <div className="Post-container">
+        <div className="New-post-container">
             <div className="Post-content-container">
                 <h6>{channel.user_id.username}</h6>
                 <p></p>
                 <input
-                    classname="Post-update-title"
+                    className="Post-update-form"
                     type="text"
                     name="title"
                     value={formValues.title}
-                    placeholder={channel.title}
+                    placeholder={channel.name}
                     onChange={handleChange}
                     required
                 />
                 <div className="Post-content-type">
-                    <h6>Post Content Type</h6>
-                    <button onClick={()=>handleClick('text')}>Text</button>
-                    <button onClick={()=>handleClick('image')}>Image</button>
-                    <button onClick={()=>handleClick('video')}>Video</button>
+                    <h6>Post Content Type:</h6>
+                    <div className="Post-buttons">
+                    <button className="Post-button" onClick={()=>handleClick('text')}>Text</button>
+                    <button className="Post-button" onClick={()=>handleClick('image')}>Image</button>
+                    <button className="Post-button" onClick={()=>handleClick('video')}>Video</button>
+                    </div>
                 </div>
                 {
                     formValues.contentType === 'text' ?
                         <div>
-                            <p>Content:</p>
+                            <p className="Post-label">Content:</p>
                             <textarea
-                                className="Post-update-content"
+                                className="Post-update-form"
                                 type="text"
                                 name="content"
                                 value={formValues.content}
@@ -80,9 +82,9 @@ const CreatePost = ({channel, user, setShowCreatePost, refresh, setRefresh}) => 
                 {
                     formValues.contentType === 'image' ?
                         <div>
-                            <p>Image Link:</p>
+                            <p className="Post-label">Image Link:</p>
                             <input
-                                className="Post-update-image"
+                             className="Post-update-form"
                                 type="text"
                                 name="image"
                                 value={formValues.image}
@@ -95,9 +97,9 @@ const CreatePost = ({channel, user, setShowCreatePost, refresh, setRefresh}) => 
                 {
                     formValues.contentType === 'video' ?
                         <div>
-                            <p>Video Link:</p>
+                            <p className="Post-label">Video Link:</p>
                             <input
-                                className="Post-update-video"
+                                className="Post-update-form"
                                 type="text"
                                 name="video"
                                 value={formValues.video}
@@ -109,7 +111,7 @@ const CreatePost = ({channel, user, setShowCreatePost, refresh, setRefresh}) => 
                 }
             </div>
             <div className="Post-actions-container">
-                <button onClick={()=>createPost()}>Post</button>
+                <button className="Post-btn" onClick={()=>createPost()}>Post</button>
             </div>
         </div>
     )

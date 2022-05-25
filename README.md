@@ -8,7 +8,7 @@
  ***
 
  ## ***DESCRIPTION***
- ### Indigo is a new social media app that combines user messaging threads with new polling technology to gauge popularity and facilitate discourse on topics, posts, and ideas. User posts support a wide variety of content including rich text, images, videos, and GIFs. Other users can view content and comment as normal, however instead of a like or dislike, users can choose one of three colors for a reaction; red, blue or indigo. Default parameters allow for red = negative response, blue = positive response, indigo = middle/wildcard, however the post can also specify a use case for each response. In turn, comments can also be voted upon, similar to Upvotes in Reddit. The number/percentage of each response is displayed as a bar underneath the post or comment with relative ratios of each color. Indigo features a mobile-first design and seeks to implement a fun and intuitive UI. Posts and comments will be sorted and searchable as most popular, along with most and least agreed. 
+ ### Indigo is a new social media app that combines user messaging threads with new polling technology to gauge popularity and facilitate discourse on topics, posts, and ideas. User posts support a wide variety of content including rich text, images, videos, and GIFs. Other users can view content and comment as normal, however instead of a like or dislike, users can choose one of three colors for a reaction; red, blue or indigo. Default parameters allow for red = negative response, blue = positive response, indigo = middle/wildcard, however the post can also specify a use case for each response. In turn, comments can also be voted upon, similar to Upvotes in Reddit. The number/percentage of each response is displayed as a bar underneath the post or comment with relative ratios of each color. Indigo seeks to implement a fun and intuitive UI. Posts and comments will be sorted and searchable as most popular, along with most and least agreed. 
  &nbsp;
 
  ## ***Technologies***
@@ -16,8 +16,8 @@
  * JWT Authentication
 
 
-## **Mobile Mockup**
-![Image](./assets/mock.png)
+## **Desktop Screenshot**
+![Image]([./assets/mock.png](https://i.imgur.com/ZvsBDKf.png))
 
 ## **Instructions for Developers (for local use)**
 * Fork and clone this repo
@@ -38,8 +38,20 @@
 
 
 ## ***Future Updates***
-- [X] ~~Submit README.md~~
-- Check back here for details on when we deploy!
+- [X] ~Submit README.md~
+- [X] Deployed on Heroku - check it out [here](https://project-indigo-front-end.herokuapp.com/)!
+- [] Mobile responsive - We are currently working on full mobile compatibility!
+- [] Sorting most to least popular
+
+## ***Known Bugs***
+- [X] ~Channel header overflows container~
+- [X] ~Follow button overflows container~
+- [X]  My Library will not refresh with full list of subscribed channels - added refresh button for now
+- [] No mobile support
+- [] Indigo score will not upon review
+- [] Indigo bar display will not render blue/red bar ratios correctly.
+- [] User will be signed-out upon page refresh
+
 
 
 

@@ -13,7 +13,7 @@ const Comment = ({ comment }) => {
 
 
     return (
-        <div className="Item-container" style={{backgroundImage: `url(${comment.background})`}}>
+        <div className="Reply-container" style={{backgroundImage: `url(${comment.background})`}}>
             <h6 className="Username" onClick={()=>userNavigate(comment.user_id._id)}>{comment.user_id.username}</h6>
             <img className="Comment-profile-image" src={comment.user_id.profile_image} />
         <h6>{comment.content}</h6>
